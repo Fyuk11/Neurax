@@ -94,7 +94,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(250, 250, 248, 0.85);
+            background: rgba(250, 250, 248, 0.92);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-subtle);
@@ -882,26 +882,20 @@
 <body>
 
     <!-- ═══════════ NAVBAR ═══════════ -->
-    <nav class="navbar" id="navbar">
-        <div class="navbar-inner">
-            <a href="#" class="navbar-logo">NEURAX<span>®</span></a>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menú">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-                    <line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/>
-                </svg>
-            </button>
-            <ul class="navbar-links" id="navbarLinks">
-    <li><a href="index.html">Inicio</a></li>
-    <li><a href="productos.html">Productos</a></li>
-    <li><a href="index.html#beneficios">Beneficios</a></li>
-    <li><a href="index.html#que-es">Qué es</a></li>
-    <li><a href="index.html#ingredientes">Ingredientes</a></li>
-    <li><a href="index.html#testimonios">Testimonios</a></li>
-    <li><a href="index.html#faq">FAQ</a></li>
-    <li><a href="productos.html" class="btn-nav">Comprar ahora</a></li>
-</ul>
-        </div>
-    </nav>
+   <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+        <a href="#" class="navbar-logo">NEURAX<span>®</span></a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menú">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                <line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/>
+            </svg>
+        </button>
+        <ul class="navbar-links" id="navbarLinks">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="productos.html" class="btn-nav">Productos</a></li>
+        </ul>
+    </div>
+</nav>
 
     <!-- ═══════════ HERO ═══════════ -->
     <section class="hero" id="comprar">
@@ -917,14 +911,13 @@
                 $24.990 <span class="old-price">$32.990</span>
             </div>
             <div class="hero-buttons">
-                <a href="#comprar" class="btn-primary">🛒 Comprar ahora</a>
+                <a href="productos.html" class="btn-primary">🛒 Comprar ahora</a>
                 <a href="#que-es" class="btn-secondary">Conocer más</a>
             </div>
             <p style="font-size:0.8rem;color:var(--text-muted);">⚡ Envío gratis en compras superiores a $40.000</p>
         </div>
         <div class="hero-gallery fade-in">
             <div class="main-image-container" id="mainImageContainer">
-                <!-- Imagen principal (SVG placeholder - frasco 1) -->
                 <svg id="mainProductImage" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
                     <defs><linearGradient id="jarGrad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#e8e4da"/><stop offset="100%" style="stop-color:#d5cfc0"/></linearGradient>
                         <linearGradient id="labelGrad1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#1a1d1c"/><stop offset="100%" style="stop-color:#2a2d2c"/></linearGradient></defs>
@@ -956,7 +949,7 @@
         </div>
     </section>
 
-    <!-- ═══════════ BENEFICIOS ═══════════ -->
+    <!-- Beneficios -->
     <section class="section section-cream" id="beneficios">
         <div class="section-inner">
             <h2 class="fade-in">Beneficios de NEURAX®</h2>
@@ -972,7 +965,7 @@
         </div>
     </section>
 
-    <!-- ═══════════ RESEÑAS ═══════════ -->
+    <!-- Reseñas -->
     <section class="section">
         <div class="section-inner">
             <h2 class="fade-in">⭐ Lo que dicen nuestros clientes</h2>
@@ -997,7 +990,7 @@
         </div>
     </section>
 
-    <!-- ═══════════ QUÉ ES NEURAX ═══════════ -->
+    <!-- Qué es NEURAX -->
     <section class="section section-cream" id="que-es">
         <div class="section-inner">
             <h2 class="fade-in">🧠 ¿Qué es NEURAX?</h2>
@@ -1031,7 +1024,7 @@
         </div>
     </section>
 
-    <!-- ═══════════ INGREDIENTES ═══════════ -->
+    <!-- Ingredientes tabla -->
     <section class="section" id="ingredientes">
         <div class="section-inner">
             <h2 class="fade-in">🌿 Ingredientes</h2>
@@ -1058,7 +1051,7 @@
         </div>
     </section>
 
-    <!-- ═══════════ CÓMO SE TOMA ═══════════ -->
+    <!-- Cómo se toma -->
     <section class="section section-cream">
         <div class="section-inner">
             <h2 class="fade-in">💊 ¿Cómo se toma?</h2>
@@ -1083,7 +1076,7 @@
         </div>
     </section>
 
-    <!-- ═══════════ ENVÍOS ═══════════ -->
+    <!-- Envíos -->
     <section class="section">
         <div class="section-inner" style="text-align:center;">
             <h2 class="fade-in">📦 Envíos</h2>
@@ -1095,7 +1088,7 @@
         </div>
     </section>
 
-    <!-- ═══════════ TIMELINE DE RESULTADOS ═══════════ -->
+    <!-- Timeline de resultados -->
     <section class="section section-dark">
         <div class="section-inner">
             <h2 class="fade-in" style="color:#fff;">Dos cápsulas al día. Un sistema nervioso más equilibrado. 🧠</h2>
@@ -1117,7 +1110,7 @@
         </div>
     </section>
 
-    <!-- ═══════════ TESTIMONIOS / ESTADÍSTICAS ═══════════ -->
+    <!-- Testimonios / Estadísticas -->
     <section class="section" id="testimonios">
         <div class="section-inner">
             <h2 class="fade-in">📊 Testimonios y resultados</h2>
@@ -1125,41 +1118,35 @@
             <div class="stats-grid fade-in">
                 <div class="stat-card">
                     <span class="stat-icon">🧠</span>
-                    <div class="stat-number" data-target="87">XX%</div>
+                    <div class="stat-number">XX%</div>
                     <p class="stat-label">sintió una mayor claridad mental durante el día</p>
                 </div>
                 <div class="stat-card">
                     <span class="stat-icon">🌙</span>
-                    <div class="stat-number" data-target="83">XX%</div>
+                    <div class="stat-number">XX%</div>
                     <p class="stat-label">percibió un descanso más reparador</p>
                 </div>
                 <div class="stat-card">
                     <span class="stat-icon">💪</span>
-                    <div class="stat-number" data-target="79">XX%</div>
+                    <div class="stat-number">XX%</div>
                     <p class="stat-label">notó una mejor recuperación después del esfuerzo</p>
                 </div>
                 <div class="stat-card">
                     <span class="stat-icon">⚖️</span>
-                    <div class="stat-number" data-target="91">XX%</div>
+                    <div class="stat-number">XX%</div>
                     <p class="stat-label">afirmó sentirse más equilibrado frente al estrés cotidiano</p>
                 </div>
             </div>
-            <p style="text-align:center;color:var(--text-muted);font-size:0.85rem;margin-top:1.5rem;" class="fade-in">
-                <em>Los porcentajes se completarán una vez obtenidos datos reales de clientes mediante encuestas posteriores al lanzamiento.</em>
-            </p>
         </div>
     </section>
 
-    <!-- ═══════════ SECCIÓN PROBLEMA/SOLUCIÓN ═══════════ -->
+    <!-- Sección problema/solución -->
     <section class="section section-cream">
         <div class="section-inner">
             <h2 class="fade-in">⚠️ ¿Sabés qué pasa cuando tu sistema nervioso deja de estar en equilibrio?</h2>
             <div class="fade-in" style="max-width:800px;">
                 <p style="font-size:1.05rem;color:var(--text-secondary);margin-bottom:1.5rem;">
-                    Tu sistema nervioso coordina prácticamente todo lo que hace tu cuerpo. Es el responsable de ayudarte a concentrarte cuando estudiás, recuperarte después de entrenar, responder al estrés diario y preparar el organismo para descansar cuando llega la noche.
-                </p>
-                <p style="color:var(--text-secondary);margin-bottom:1rem;">
-                    El problema es que el ritmo de vida actual —estrés constante, exceso de pantallas, pocas horas de sueño, cafeína y exigencia permanente— puede hacer que ese equilibrio se altere. Y cuando eso ocurre, no aparece un solo problema. Aparecen varios al mismo tiempo.
+                    Tu sistema nervioso coordina prácticamente todo lo que hace tu cuerpo. El ritmo de vida actual puede alterar ese equilibrio.
                 </p>
                 <div style="background:#fff;border-radius:var(--radius-lg);padding:1.8rem;border:1px solid var(--border-subtle);margin:1.5rem 0;">
                     <p style="font-weight:700;margin-bottom:1rem;">Cuando el sistema nervioso pierde su equilibrio, pueden aparecer:</p>
@@ -1171,67 +1158,65 @@
                     </ul>
                 </div>
                 <p style="font-weight:600;color:var(--accent-green-dark);font-size:1.05rem;">
-                    ✅ NEURAX fue diseñado para acompañar la regulación del sistema nervioso y ayudar a que tu cuerpo recupere el equilibrio que necesita para responder mejor a cada uno de estos desafíos.
+                    ✅ NEURAX fue diseñado para acompañar la regulación del sistema nervioso y ayudar a que tu cuerpo recupere el equilibrio que necesita.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════ INGREDIENTES DETALLADOS ═══════════ -->
+    <!-- Ingredientes detallados -->
     <section class="section">
         <div class="section-inner">
             <h2 class="fade-in">🔬 Los ingredientes que hacen que NEURAX funcione de manera diferente</h2>
-            <p class="section-subtitle fade-in">Cada ingrediente cumple una función distinta. Juntos trabajan sobre un mismo objetivo.</p>
             <div class="ingredient-detail-cards fade-in">
                 <div class="ingredient-detail-card">
                     <div class="ingredient-header"><span class="ing-icon">🧠</span><h4>Magnesio L-Treonato</h4></div>
-                    <p>No todos los magnesios son iguales. El L-Treonato es una de las formas más estudiadas por su capacidad para elevar los niveles de magnesio en el sistema nervioso. Participa en el funcionamiento normal de las neuronas y ayuda a mantener el equilibrio entre los procesos de activación y relajación del organismo.</p>
+                    <p>No todos los magnesios son iguales. El L-Treonato es una de las formas más estudiadas por su capacidad para elevar los niveles de magnesio en el sistema nervioso.</p>
                 </div>
                 <div class="ingredient-detail-card">
                     <div class="ingredient-header"><span class="ing-icon">🍃</span><h4>L-Teanina</h4></div>
-                    <p>Un aminoácido presente de forma natural en el té verde, reconocido por favorecer un estado de calma sin producir somnolencia. Ayuda a reducir la respuesta al estrés y favorece un estado de atención tranquila.</p>
+                    <p>Un aminoácido presente de forma natural en el té verde, reconocido por favorecer un estado de calma sin producir somnolencia.</p>
                 </div>
                 <div class="ingredient-detail-card">
                     <div class="ingredient-header"><span class="ing-icon">🍄</span><h4>Melena de León</h4></div>
-                    <p>Un hongo funcional ampliamente estudiado por su potencial para apoyar la salud del sistema nervioso y la función cognitiva. Forma parte de la fórmula por su papel en el mantenimiento de un cerebro sano y un rendimiento mental sostenido.</p>
+                    <p>Un hongo funcional ampliamente estudiado por su potencial para apoyar la salud del sistema nervioso y la función cognitiva.</p>
                 </div>
                 <div class="ingredient-detail-card">
                     <div class="ingredient-header"><span class="ing-icon">🌿</span><h4>Ashwagandha KSM-66®</h4></div>
-                    <p>Uno de los extractos de ashwagandha con mayor respaldo científico. Actúa como adaptógeno, ayudando al organismo a responder mejor frente al estrés físico y mental, favoreciendo un estado de mayor equilibrio y resiliencia.</p>
+                    <p>Uno de los extractos de ashwagandha con mayor respaldo científico. Actúa como adaptógeno, ayudando al organismo a responder mejor frente al estrés.</p>
                 </div>
                 <div class="ingredient-detail-card">
                     <div class="ingredient-header"><span class="ing-icon">⚡</span><h4>Vitamina B6</h4></div>
-                    <p>Un nutriente esencial que participa en el funcionamiento normal del sistema nervioso y contribuye a la síntesis de neurotransmisores. Además, acompaña la utilización adecuada de otros componentes de la fórmula, potenciando el trabajo conjunto de todos los ingredientes.</p>
+                    <p>Un nutriente esencial que participa en el funcionamiento normal del sistema nervioso y contribuye a la síntesis de neurotransmisores.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════ FAQ ═══════════ -->
+    <!-- FAQ -->
     <section class="section section-cream" id="faq">
         <div class="section-inner section-narrow">
             <h2 class="fade-in" style="text-align:center;">❓ Preguntas frecuentes</h2>
-            <p class="section-subtitle fade-in" style="text-align:center;margin-left:auto;margin-right:auto;">Todo lo que necesitás saber sobre NEURAX.</p>
             <div class="faq-list fade-in">
                 <div class="faq-item">
                     <button class="faq-question">¿Qué hace exactamente NEURAX? <span class="faq-arrow">▼</span></button>
-                    <div class="faq-answer"><div class="faq-answer-inner">NEURAX ayuda a regular y equilibrar el sistema nervioso. Su fórmula fue desarrollada para favorecer la claridad mental, el manejo del estrés, la recuperación física y un descanso reparador, acompañando el funcionamiento natural del organismo sin estimular ni sedar.</div></div>
+                    <div class="faq-answer"><div class="faq-answer-inner">NEURAX ayuda a regular y equilibrar el sistema nervioso. Favorece la claridad mental, el manejo del estrés, la recuperación física y un descanso reparador.</div></div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">¿En cuánto tiempo voy a notar resultados? <span class="faq-arrow">▼</span></button>
-                    <div class="faq-answer"><div class="faq-answer-inner">Cada organismo responde de manera diferente. Algunas personas perciben una mayor sensación de equilibrio y calma durante los primeros días de uso. Con la toma diaria y constante, los beneficios suelen hacerse más evidentes a lo largo de las siguientes semanas. Recomendamos utilizar NEURAX de forma continua durante al menos 60 días para obtener los mejores resultados.</div></div>
+                    <div class="faq-answer"><div class="faq-answer-inner">Algunas personas perciben una mayor sensación de equilibrio y calma durante los primeros días. Recomendamos usar NEURAX de forma continua durante al menos 60 días.</div></div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">¿Es seguro? <span class="faq-arrow">▼</span></button>
-                    <div class="faq-answer"><div class="faq-answer-inner">Sí. NEURAX está formulado con ingredientes ampliamente estudiados y utilizados en suplementación nutricional. Como con cualquier suplemento dietario, si estás embarazada, en período de lactancia, tenés una condición médica o tomás medicación, consultá con un profesional de la salud antes de consumirlo.</div></div>
+                    <div class="faq-answer"><div class="faq-answer-inner">Sí. NEURAX está formulado con ingredientes ampliamente estudiados. Como con cualquier suplemento, consultá a tu médico si tenés una condición particular.</div></div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">¿Cuál es el mejor momento del día para tomarlo? <span class="faq-arrow">▼</span></button>
-                    <div class="faq-answer"><div class="faq-answer-inner">La constancia es más importante que el horario. Recomendamos tomar dos cápsulas por día, preferentemente junto a una comida, para incorporarlo fácilmente a tu rutina diaria.</div></div>
+                    <div class="faq-answer"><div class="faq-answer-inner">La constancia es más importante que el horario. Recomendamos tomar dos cápsulas por día, preferentemente junto a una comida.</div></div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">¿Cómo funciona si sirve tanto para concentrarme como para descansar? <span class="faq-arrow">▼</span></button>
-                    <div class="faq-answer"><div class="faq-answer-inner">Porque NEURAX no busca estimular ni sedar. Su objetivo es ayudar a regular el sistema nervioso para que el organismo pueda responder mejor según las necesidades de cada momento: favorecer el enfoque durante el día, acompañar la recuperación después del esfuerzo y facilitar un descanso de calidad cuando llega la noche.</div></div>
+                    <div class="faq-answer"><div class="faq-answer-inner">Porque NEURAX no busca estimular ni sedar. Ayuda a regular el sistema nervioso para que el organismo pueda responder mejor según las necesidades de cada momento.</div></div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">¿Cuánto dura cada frasco? <span class="faq-arrow">▼</span></button>
@@ -1248,136 +1233,118 @@
                 <div class="faq-item">
                     <button class="faq-question">Contraindicaciones <span class="faq-arrow">▼</span></button>
                     <div class="faq-answer"><div class="faq-answer-inner">
-                            Consultá con un profesional de la salud antes de consumir NEURAX si:<br>
-                            ● Estás embarazada o en período de lactancia.<br>
-                            ● Tenés una enfermedad diagnosticada o recibís tratamiento médico.<br>
-                            ● Consumís medicación de forma habitual o suplementos que puedan interactuar con alguno de sus ingredientes.
+                        Consultá con un profesional de la salud antes de consumir NEURAX si:<br>
+                        ● Estás embarazada o en período de lactancia.<br>
+                        ● Tenés una enfermedad diagnosticada o recibís tratamiento médico.<br>
+                        ● Consumís medicación de forma habitual o suplementos que puedan interactuar con alguno de sus ingredientes.
                     </div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════ CTA BANNER ═══════════ -->
+    <!-- CTA Banner -->
     <section class="section">
         <div class="section-inner">
             <div class="cta-banner fade-in">
                 <h3>🧠 Dos cápsulas al día. Un sistema nervioso más equilibrado para afrontar cada desafío.</h3>
                 <p style="color:#d5d5cf;">60 cápsulas vegetales · 30 porciones · Apto vegano · Sin TACC</p>
-                <a href="#comprar" class="btn-primary">🛒 Quiero equilibrar mi sistema nervioso</a>
+                <a href="productos.html" class="btn-primary">🛒 Quiero equilibrar mi sistema nervioso</a>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════ FOOTER ═══════════ -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-links">
             <a href="#beneficios">Beneficios</a>
             <a href="#que-es">Qué es</a>
             <a href="#ingredientes">Ingredientes</a>
             <a href="#faq">FAQ</a>
+            <a href="productos.html">Productos</a>
         </div>
         <p>© 2026 NEURAX®. Todos los derechos reservados.</p>
         <p style="margin-top:0.5rem;">Suplemento dietario · Consultá a tu médico antes de consumir · No reemplaza una alimentación equilibrada.</p>
     </footer>
 
-    <!-- ═══════════ SCRIPTS ═══════════ -->
+    <!-- Scripts -->
     <script>
-        // ── Menú móvil ──
+        // Menú móvil
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const navbarLinks = document.getElementById('navbarLinks');
         mobileMenuToggle.addEventListener('click', () => {
             navbarLinks.classList.toggle('active');
         });
-        // Cerrar menú al hacer clic en un link
         document.querySelectorAll('.navbar-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navbarLinks.classList.remove('active');
             });
         });
 
-        // ── Galería de producto ──
+        // Galería de producto
         const thumbnails = document.querySelectorAll('.thumbnail');
         const mainImageContainer = document.getElementById('mainImageContainer');
-        // SVGs para cada vista (los mismos que los thumbnails pero grandes)
         const mainImages = [
             `<svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" style="width:75%;height:auto;">
-                    <defs><linearGradient id="jg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#e8e4da"/><stop offset="100%" style="stop-color:#d5cfc0"/></linearGradient><linearGradient id="lg1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#1a1d1c"/><stop offset="100%" style="stop-color:#2a2d2c"/></linearGradient></defs>
-                    <rect x="55" y="40" width="90" height="200" rx="16" fill="url(#jg1)" stroke="#c0b8a8" stroke-width="2"/>
-                    <rect x="62" y="80" width="76" height="120" rx="8" fill="url(#lg1)"/>
-                    <text x="100" y="130" text-anchor="middle" fill="#c9a96e" font-family="serif" font-weight="bold" font-size="16">NEURAX</text>
-                    <text x="100" y="155" text-anchor="middle" fill="#ccc" font-size="9">Regulador</text>
-                    <text x="100" y="170" text-anchor="middle" fill="#ccc" font-size="9">Sist. Nervioso</text>
-                    <rect x="60" y="245" width="80" height="18" rx="9" fill="#3d6b55"/>
-                    <text x="100" y="258" text-anchor="middle" fill="#fff" font-size="8" font-weight="600">60 CÁPSULAS</text>
-                    <rect x="85" y="28" width="30" height="16" rx="8" fill="#c9a96e"/>
-                    <circle cx="100" cy="268" r="6" fill="#c9a96e" opacity="0.6"/>
-                </svg>`,
+                <defs><linearGradient id="jg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#e8e4da"/><stop offset="100%" stop-color="#d5cfc0"/></linearGradient><linearGradient id="lg1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#1a1d1c"/><stop offset="100%" stop-color="#2a2d2c"/></linearGradient></defs>
+                <rect x="55" y="40" width="90" height="200" rx="16" fill="url(#jg1)" stroke="#c0b8a8" stroke-width="2"/>
+                <rect x="62" y="80" width="76" height="120" rx="8" fill="url(#lg1)"/>
+                <text x="100" y="130" text-anchor="middle" fill="#c9a96e" font-family="serif" font-weight="bold" font-size="16">NEURAX</text>
+                <text x="100" y="155" text-anchor="middle" fill="#ccc" font-size="9">Regulador</text>
+                <text x="100" y="170" text-anchor="middle" fill="#ccc" font-size="9">Sist. Nervioso</text>
+                <rect x="60" y="245" width="80" height="18" rx="9" fill="#3d6b55"/>
+                <text x="100" y="258" text-anchor="middle" fill="#fff" font-size="8" font-weight="600">60 CÁPSULAS</text>
+                <rect x="85" y="28" width="30" height="16" rx="8" fill="#c9a96e"/>
+                <circle cx="100" cy="268" r="6" fill="#c9a96e" opacity="0.6"/>
+            </svg>`,
             `<svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" style="width:75%;height:auto;">
-                    <defs><linearGradient id="jg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#d5cfc0"/><stop offset="100%" style="stop-color:#c5bfae"/></linearGradient></defs>
-                    <rect x="65" y="40" width="70" height="200" rx="12" fill="url(#jg2)" stroke="#b0a898" stroke-width="2"/>
-                    <rect x="70" y="90" width="60" height="110" rx="6" fill="#2a2d2c"/>
-                    <text x="100" y="148" text-anchor="middle" fill="#c9a96e" font-family="serif" font-weight="bold" font-size="22">N</text>
-                    <rect x="68" y="245" width="64" height="16" rx="8" fill="#3d6b55"/>
-                    <text x="100" y="257" text-anchor="middle" fill="#fff" font-size="7" font-weight="600">60 CÁPS</text>
-                </svg>`,
+                <rect x="65" y="40" width="70" height="200" rx="12" fill="#d5cfc0" stroke="#b0a898" stroke-width="2"/>
+                <rect x="70" y="90" width="60" height="110" rx="6" fill="#2a2d2c"/>
+                <text x="100" y="148" text-anchor="middle" fill="#c9a96e" font-family="serif" font-weight="bold" font-size="22">N</text>
+                <rect x="68" y="245" width="64" height="16" rx="8" fill="#3d6b55"/>
+                <text x="100" y="257" text-anchor="middle" fill="#fff" font-size="7" font-weight="600">60 CÁPS</text>
+            </svg>`,
             `<svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" style="width:75%;height:auto;">
-                    <defs><linearGradient id="jg3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#f0ede5"/><stop offset="100%" style="stop-color:#e0dac8"/></linearGradient></defs>
-                    <rect x="55" y="40" width="90" height="200" rx="16" fill="url(#jg3)" stroke="#c0b8a8" stroke-width="2"/>
-                    <rect x="62" y="75" width="76" height="130" rx="8" fill="#1a1d1c"/>
-                    <circle cx="100" cy="130" r="28" fill="none" stroke="#c9a96e" stroke-width="2.5"/>
-                    <text x="100" y="138" text-anchor="middle" fill="#c9a96e" font-family="serif" font-weight="bold" font-size="20">N</text>
-                    <rect x="60" y="245" width="80" height="18" rx="9" fill="#3d6b55"/>
-                    <text x="100" y="258" text-anchor="middle" fill="#fff" font-size="8" font-weight="600">60 CÁPSULAS</text>
-                </svg>`,
+                <rect x="55" y="40" width="90" height="200" rx="16" fill="#f0ede5" stroke="#c0b8a8" stroke-width="2"/>
+                <rect x="62" y="75" width="76" height="130" rx="8" fill="#1a1d1c"/>
+                <circle cx="100" cy="130" r="28" fill="none" stroke="#c9a96e" stroke-width="2.5"/>
+                <text x="100" y="138" text-anchor="middle" fill="#c9a96e" font-family="serif" font-weight="bold" font-size="20">N</text>
+                <rect x="60" y="245" width="80" height="18" rx="9" fill="#3d6b55"/>
+                <text x="100" y="258" text-anchor="middle" fill="#fff" font-size="8" font-weight="600">60 CÁPSULAS</text>
+            </svg>`,
             `<svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" style="width:75%;height:auto;">
-                    <defs><linearGradient id="jg4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#e8e4da"/><stop offset="100%" style="stop-color:#d5cfc0"/></linearGradient></defs>
-                    <rect x="55" y="55" width="90" height="185" rx="16" fill="url(#jg4)" stroke="#c0b8a8" stroke-width="2"/>
-                    <rect x="55" y="30" width="90" height="35" rx="10" fill="#d5cfc0" stroke="#b0a898" stroke-width="2"/>
-                    <rect x="62" y="95" width="76" height="110" rx="8" fill="#2a2d2c"/>
-                    <text x="100" y="148" text-anchor="middle" fill="#c9a96e" font-family="serif" font-weight="bold" font-size="15">NEURAX</text>
-                    <rect x="60" y="245" width="80" height="18" rx="9" fill="#3d6b55"/>
-                    <text x="100" y="258" text-anchor="middle" fill="#fff" font-size="8" font-weight="600">60 CÁPSULAS</text>
-                    <rect x="85" y="20" width="30" height="14" rx="7" fill="#c9a96e"/>
-                </svg>`
+                <rect x="55" y="55" width="90" height="185" rx="16" fill="#e8e4da" stroke="#c0b8a8" stroke-width="2"/>
+                <rect x="55" y="30" width="90" height="35" rx="10" fill="#d5cfc0" stroke="#b0a898" stroke-width="2"/>
+                <rect x="62" y="95" width="76" height="110" rx="8" fill="#2a2d2c"/>
+                <text x="100" y="148" text-anchor="middle" fill="#c9a96e" font-family="serif" font-weight="bold" font-size="15">NEURAX</text>
+                <rect x="60" y="245" width="80" height="18" rx="9" fill="#3d6b55"/>
+                <text x="100" y="258" text-anchor="middle" fill="#fff" font-size="8" font-weight="600">60 CÁPSULAS</text>
+                <rect x="85" y="20" width="30" height="14" rx="7" fill="#c9a96e"/>
+            </svg>`
         ];
-
         thumbnails.forEach(thumb => {
             thumb.addEventListener('click', () => {
                 thumbnails.forEach(t => t.classList.remove('active'));
                 thumb.classList.add('active');
                 const imgIndex = parseInt(thumb.getAttribute('data-img'));
                 mainImageContainer.innerHTML = mainImages[imgIndex];
-                // Pequeña animación
-                mainImageContainer.style.transform = 'scale(0.97)';
-                setTimeout(() => {
-                    mainImageContainer.style.transform = 'scale(1)';
-                }, 150);
             });
         });
 
-        // ── FAQ Accordion ──
+        // FAQ Accordion
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
                 const faqItem = button.parentElement;
                 const isOpen = faqItem.classList.contains('open');
-                // Cerrar todos
-                document.querySelectorAll('.faq-item').forEach(item => item.classList.remove(
-                    'open'));
-                // Abrir el clickeado si no estaba abierto
+                document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('open'));
                 if (!isOpen) {
                     faqItem.classList.add('open');
                 }
             });
         });
 
-        // ── Animaciones scroll (Intersection Observer) ──
+        // Animaciones scroll
         const fadeElements = document.querySelectorAll('.fade-in');
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px 0px -50px 0px',
-            threshold: 0.1
-        };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1385,10 +1352,10 @@
                     observer.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
         fadeElements.forEach(el => observer.observe(el));
 
-        // ── Smooth scroll para links internos ──
+        // Smooth scroll para links internos
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');

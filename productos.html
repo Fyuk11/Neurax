@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NEURAX® | Regulador Inteligente del Sistema Nervioso. Fórmula premium con Magnesio L-Treonato, L-Teanina, Melena de León y Ashwagandha.">
+    <meta name="description" content="NEURAX® | Regulador Inteligente del Sistema Nervioso. Fórmula premium.">
     <title>NEURAX® | Producto Oficial</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,28 +45,113 @@
         .container { max-width: var(--max-width); margin:0 auto; padding:0 1.5rem; }
 
         /* Navbar */
-        .navbar {
-            position:sticky; top:0; z-index:1000;
-            background: rgba(250,250,248,0.92); backdrop-filter:blur(16px);
-            border-bottom:1px solid var(--border-subtle);
+       .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(250, 250, 248, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-subtle);
+            transition: all var(--transition-smooth);
+            padding: 0 1.5rem;
         }
         .navbar-inner {
-            display:flex; align-items:center; justify-content:space-between;
-            height:64px; max-width: var(--max-width); margin:0 auto; padding:0 1.5rem;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
         }
-        .logo { font-family:var(--font-heading); font-size:1.5rem; font-weight:700; color:var(--text-primary); text-decoration:none; }
-        .logo span { color: var(--accent-gold); }
-        .nav-links { display:flex; gap:1.6rem; list-style:none; align-items:center; }
-        .nav-links a { text-decoration:none; color:var(--text-secondary); font-size:0.9rem; font-weight:500; }
-        .nav-links a:hover { color: var(--accent-gold-dark); }
-        .btn-nav { background:var(--accent-gold); color:#fff!important; padding:0.5rem 1.4rem; border-radius:50px; font-weight:600; }
+        .navbar-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+        .navbar-logo span {
+            color: var(--accent-gold);
+        }
+        .navbar-links {
+            display: flex;
+            gap: 1.6rem;
+            list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        .navbar-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+            white-space: nowrap;
+        }
+        .navbar-links a:hover {
+            color: var(--accent-gold-dark);
+        }
+        .btn-nav {
+            background: var(--accent-gold);
+            color: #fff !important;
+            padding: 0.5rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all var(--transition-fast);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .btn-nav:hover {
+            background: var(--accent-gold-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.4rem;
+            color: var(--text-primary);
+        }
+        .mobile-menu-toggle svg {
+            width: 26px;
+            height: 26px;
+        }
 
-        /* Hero producto */
+        @media (max-width: 768px) {
+            .navbar-links {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: rgba(250, 250, 248, 0.97);
+                backdrop-filter: blur(16px);
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 1rem;
+                border-bottom: 1px solid var(--border-subtle);
+                box-shadow: var(--shadow-lg);
+            }
+            .navbar-links.active {
+                display: flex;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+        /* Hero producto: galería sticky + columna derecha extendida */
         .product-hero {
             display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start;
-            padding:3rem 0 4rem;
+            padding:3rem 0 0; margin-bottom:4rem;
         }
-        .gallery { position:sticky; top:100px; }
+        .gallery-col { position: sticky; top: 100px; }
         .main-img {
             aspect-ratio:1/1.2; border-radius:var(--radius-xl); overflow:hidden;
             background:var(--bg-secondary); display:flex; align-items:center; justify-content:center;
@@ -88,11 +173,10 @@
             border-radius:50px; padding:0.3rem 1rem; font-size:0.8rem; font-weight:600;
             color:var(--accent-green); text-transform:uppercase;
         }
-        .checklist { display:flex; flex-direction:column; gap:0.8rem; }
+        .checklist { display:flex; flex-direction:column; gap:0.8rem; list-style:none; }
         .checklist li { display:flex; align-items:flex-start; gap:0.5rem; font-size:0.9rem; }
 
-        /* Bundles estilo Lipo */
-        .bundles { max-width:520px; }
+        /* Bundles */
         .bundle-card {
             position:relative; display:flex; align-items:center; gap:12px;
             padding:14px 15px; border:2px solid #e7d8db; border-radius:14px;
@@ -120,12 +204,44 @@
         .btn-add {
             width:100%; padding:16px; border:none; border-radius:14px;
             background:var(--accent-gold); color:#fff; font-weight:800; font-size:18px;
-            cursor:pointer; transition:0.2s;
+            cursor:pointer; transition:0.2s; margin-top:1rem;
         }
         .btn-add:hover { background:var(--accent-gold-dark); transform:translateY(-1px); }
-        .stock-alert { display:flex; align-items:center; gap:8px; margin-top:14px; font-size:13px; }
+        .stock-alert { display:flex; align-items:center; gap:8px; margin:1rem 0; font-size:13px; }
         .stock-dot { width:10px; height:10px; border-radius:50%; background:#ff4d4f; animation:pulse 1.4s infinite; }
         @keyframes pulse { 0%,100%{ transform:scale(1); opacity:.85; } 50%{ transform:scale(1.28); opacity:1; } }
+
+        /* Marketplace integrado */
+        .marketplace-card {
+            background:#fff; border:1px solid var(--border-subtle); border-radius:var(--radius-lg);
+            padding:1.5rem; margin:1.5rem 0; box-shadow:0 4px 12px rgba(0,0,0,0.04);
+        }
+        .seller-top { display:flex; align-items:center; gap:12px; margin-bottom:1rem; }
+        .seller-avatar {
+            width:48px; height:48px; border-radius:12px; background:var(--bg-secondary);
+            display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--accent-gold);
+        }
+        .seller-name { font-weight:700; font-size:1rem; }
+        .seller-badge {
+            display:inline-block; background:var(--accent-gold); color:#fff; font-size:0.7rem;
+            padding:2px 8px; border-radius:4px; margin-left:8px;
+        }
+        .seller-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:0.5rem; text-align:center; margin:1rem 0; }
+        .seller-stat { font-size:0.8rem; color:var(--text-muted); }
+        .seller-stat strong { display:block; color:var(--text-primary); font-size:1.1rem; }
+
+        /* Hero FAQ acordeón */
+        .hero-faq { border-top:1px solid var(--border-subtle); margin-top:1.5rem; padding-top:1rem; }
+        .hero-faq-item { border-bottom:1px solid var(--border-subtle); }
+        .hero-faq-question {
+            width:100%; text-align:left; padding:0.8rem 0; background:none; border:none;
+            font-weight:600; cursor:pointer; display:flex; justify-content:space-between;
+            font-size:0.95rem;
+        }
+        .hero-faq-answer {
+            max-height:0; overflow:hidden; transition:max-height 0.3s ease; font-size:0.9rem; color:var(--text-secondary);
+        }
+        .hero-faq-item.open .hero-faq-answer { max-height:200px; padding-bottom:0.8rem; }
 
         /* Secciones generales */
         .section { padding:4rem 0; }
@@ -133,32 +249,34 @@
         .bg-light { background:var(--bg-secondary); }
         .bg-dark { background:var(--bg-dark); color:var(--text-light); }
 
-        /* Timeline */
-        .timeline { position:relative; max-width:800px; margin:0 auto; }
+        /* Timeline alternado */
+        .timeline { position:relative; max-width:900px; margin:0 auto; padding:0 1rem; }
         .timeline::before {
-            content:""; position:absolute; left:20px; top:0; bottom:0; width:2px;
-            background:var(--accent-gold); opacity:0.3;
+            content:""; position:absolute; left:50%; top:0; bottom:0; width:2px;
+            background:var(--accent-gold); opacity:0.3; transform:translateX(-50%);
         }
         .timeline-item {
-            position:relative; padding-left:56px; margin-bottom:2rem;
-            opacity:0.4; transition:0.3s;
+            display:flex; align-items:flex-start; margin-bottom:3rem; position:relative;
+            opacity:0.4; transition:opacity 0.3s;
         }
         .timeline-item.active { opacity:1; }
-        .timeline-item::before {
-            content:""; position:absolute; left:14px; top:6px;
-            width:14px; height:14px; border-radius:50%; background:var(--accent-gold);
-            border:3px solid var(--bg-primary); z-index:2;
-        }
+        .timeline-item.left { flex-direction:row; }
+        .timeline-item.right { flex-direction:row-reverse; }
         .timeline-card {
-            background:#fff; border-radius:var(--radius-lg); padding:1.5rem;
+            width:45%; background:#fff; border-radius:var(--radius-lg); padding:1.5rem;
             box-shadow:0 4px 16px rgba(0,0,0,0.06);
         }
-        .timeline-card img { width:100%; height:200px; object-fit:cover; border-radius:var(--radius-md); margin-bottom:1rem; }
+        .timeline-card img {
+            width:100%; height:200px; object-fit:cover; border-radius:var(--radius-md); margin-bottom:1rem;
+        }
+        .timeline-item::before {
+            content:""; position:absolute; left:50%; top:20px; width:14px; height:14px;
+            border-radius:50%; background:var(--accent-gold); border:3px solid var(--bg-primary);
+            transform:translate(-50%,0); z-index:2;
+        }
 
         /* UGC Marquee */
-        .marquee {
-            overflow:hidden; display:flex; gap:1rem; width:100%;
-        }
+        .marquee { overflow:hidden; display:flex; gap:1rem; }
         .marquee-track { display:flex; gap:1rem; animation:scroll 20s linear infinite; }
         .marquee-item { width:240px; flex-shrink:0; border-radius:var(--radius-lg); overflow:hidden; }
         .marquee-item img { width:100%; height:340px; object-fit:cover; }
@@ -182,7 +300,7 @@
             width:40px; height:40px; border-radius:50%; font-size:1.2rem; cursor:pointer;
         }
 
-        /* FAQ */
+        /* FAQ final */
         .faq-item { border-bottom:1px solid var(--border-subtle); }
         .faq-question {
             width:100%; text-align:left; padding:1rem 0; background:none; border:none;
@@ -197,77 +315,119 @@
 
         @media (max-width:900px) {
             .product-hero { grid-template-columns:1fr; }
-            .gallery { position:static; }
-            .product-info { text-align:center; }
-            .bundles { max-width:100%; }
+            .gallery-col { position:static; }
+            .timeline::before { left:20px; }
+            .timeline-item { flex-direction:column!important; padding-left:40px; }
+            .timeline-item::before { left:20px; }
+            .timeline-card { width:100%; }
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar">
-        <div class="navbar-inner">
-            <a href="index.html" class="logo">NEURAX<span>®</span></a>
-            <ul class="nav-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="productos.html" class="btn-nav">Productos</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div class="navbar-inner">
+        <a href="index.html" class="navbar-logo">NEURAX<span>®</span></a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menú">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                <line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/>
+            </svg>
+        </button>
+        <ul class="navbar-links" id="navbarLinks">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="productos.html" class="btn-nav">Productos</a></li>
+        </ul>
+    </div>
+</nav>
 
     <main class="container">
-        <!-- Hero Producto -->
+        <!-- Hero -->
         <div class="product-hero">
-            <div class="gallery">
+            <div class="gallery-col">
                 <div class="main-img" id="mainImageContainer">
                     <svg viewBox="0 0 200 300"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#e8e4da"/><stop offset="100%" stop-color="#d5cfc0"/></linearGradient></defs><rect x="55" y="40" width="90" height="200" rx="16" fill="url(#g1)" stroke="#c0b8a8" stroke-width="2"/><rect x="62" y="80" width="76" height="120" rx="8" fill="#1a1d1c"/><text x="100" y="130" text-anchor="middle" fill="#c9a96e" font-family="serif" font-weight="bold" font-size="16">NEURAX</text><rect x="60" y="245" width="80" height="18" rx="9" fill="#3d6b55"/><text x="100" y="258" text-anchor="middle" fill="#fff" font-size="8">60 CÁPSULAS</text></svg>
                 </div>
                 <div class="thumbnails" id="thumbnails"></div>
             </div>
-            <div class="product-info">
-                <div class="badge">🧠 Nuevo lanzamiento</div>
-                <h1 style="font-size:2.2rem;">NEURAX® Regulador Inteligente del Sistema Nervioso</h1>
-                <ul class="checklist">
-                    <li>✅ Claridad mental y enfoque sin estimulantes</li>
-                    <li>✅ Equilibrio del sistema nervioso</li>
-                    <li>✅ Descanso reparador y manejo del estrés</li>
-                    <li>✅ 60 cápsulas vegetales · Sin TACC · Apto vegano</li>
-                </ul>
 
-                <!-- Bundles -->
-                <div class="bundles" id="bundleContainer">
-                    <!-- Los bundles se generan con JS -->
-                </div>
+            <div class="info-col">
+                <div class="product-info">
+                    <div class="badge">🧠 Nuevo lanzamiento</div>
+                    <h1 style="font-size:2.2rem;">NEURAX® Regulador Inteligente del Sistema Nervioso</h1>
+                    <ul class="checklist">
+                        <li>✅ Claridad mental y enfoque sin estimulantes</li>
+                        <li>✅ Equilibrio del sistema nervioso</li>
+                        <li>✅ Descanso reparador y manejo del estrés</li>
+                        <li>✅ 60 cápsulas vegetales · Sin TACC · Apto vegano</li>
+                    </ul>
 
-                <button class="btn-add" id="addToCartBtn">🛒 Agregar al carrito — <span id="cartTotal">$24.990</span></button>
-                <div class="stock-alert">
-                    <span class="stock-dot"></span>
-                    <span>Quedan <strong>18</strong> unidades en stock</span>
+                    <div class="bundles" id="bundleContainer"></div>
+
+                    <button class="btn-add" id="addToCartBtn">🛒 Agregar al carrito — <span id="cartTotal">$24.990</span></button>
+                    <div class="stock-alert">
+                        <span class="stock-dot"></span>
+                        <span>Quedan <strong>18</strong> unidades en stock</span>
+                    </div>
+
+                    <div class="marketplace-card">
+                        <div class="seller-top">
+                            <div class="seller-avatar">🧠</div>
+                            <div>
+                                <div class="seller-name">NEURAX Oficial <span class="seller-badge">Marca verificada</span></div>
+                                <div style="font-size:0.8rem; color:var(--text-muted);">+500 seguidores · +5 productos</div>
+                            </div>
+                        </div>
+                        <div class="seller-stats">
+                            <div class="seller-stat"><strong>+2.500</strong> Ventas</div>
+                            <div class="seller-stat">✔ Buena atención</div>
+                            <div class="seller-stat">✔ Entrega a tiempo</div>
+                        </div>
+                        <p style="font-size:0.8rem; color:var(--text-muted); text-align:center; margin-top:0.5rem;">MercadoLíder Platinum en suplementos naturales</p>
+                    </div>
+
+                    <!-- Hero FAQ acordeón -->
+                    <div class="hero-faq">
+                        <div class="hero-faq-item">
+                            <button class="hero-faq-question">¿Qué es NEURAX? <span>▼</span></button>
+                            <div class="hero-faq-answer"><p>NEURAX es un regulador inteligente del sistema nervioso. Su fórmula premium ayuda a equilibrar la respuesta al estrés, la claridad mental y el descanso reparador sin estimulantes ni sedantes.</p></div>
+                        </div>
+                        <div class="hero-faq-item">
+                            <button class="hero-faq-question">Ingredientes <span>▼</span></button>
+                            <div class="hero-faq-answer"><p>🧠 Magnesio L-Treonato, 🍃 L-Teanina, 🍄 Melena de León, 🌿 Ashwagandha KSM-66®, ⚡ Vitamina B6. Cápsulas vegetales, sin TACC, apto vegano.</p></div>
+                        </div>
+                        <div class="hero-faq-item">
+                            <button class="hero-faq-question">¿Cómo se toma? <span>▼</span></button>
+                            <div class="hero-faq-answer"><p>Dos cápsulas al día, preferentemente con una comida. La constancia es clave.</p></div>
+                        </div>
+                        <div class="hero-faq-item">
+                            <button class="hero-faq-question">Envíos <span>▼</span></button>
+                            <div class="hero-faq-answer"><p>📦 Envíos a todo el país. Despachamos en 48-72 hs hábiles. Recibirás tu número de seguimiento por email.</p></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Evolución Semanal -->
+    <!-- Evolución (timeline alternado) -->
     <section class="section bg-light">
         <div class="container">
             <h2 class="section-title">Tu evolución con NEURAX</h2>
-            <div class="timeline" id="timeline">
-                <div class="timeline-item">
+            <div class="timeline">
+                <div class="timeline-item left">
                     <div class="timeline-card">
                         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect fill='%23f0ede5' width='400' height='200'/%3E%3Ctext x='200' y='100' text-anchor='middle' fill='%234a4d4c' font-size='16'%3E🧠 Semana 1%3C/text%3E%3C/svg%3E" alt="Semana 1">
                         <h4>Semana 1</h4>
                         <p>Empezás a sentir mayor calma y claridad mental. Tu cuerpo comienza a equilibrarse.</p>
                     </div>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item right">
                     <div class="timeline-card">
                         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect fill='%23f0ede5' width='400' height='200'/%3E%3Ctext x='200' y='100' text-anchor='middle' fill='%234a4d4c' font-size='16'%3E🌙 Semana 3%3C/text%3E%3C/svg%3E" alt="Semana 3">
                         <h4>Semana 3</h4>
                         <p>El estrés pesa menos, dormís mejor y tu enfoque mejora notablemente.</p>
                     </div>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item left">
                     <div class="timeline-card">
                         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect fill='%23f0ede5' width='400' height='200'/%3E%3Ctext x='200' y='100' text-anchor='middle' fill='%234a4d4c' font-size='16'%3E✨ 2° Mes%3C/text%3E%3C/svg%3E" alt="2° Mes">
                         <h4>2° Mes</h4>
@@ -278,18 +438,16 @@
         </div>
     </section>
 
-    <!-- Testimonios visuales (UGC) -->
+    <!-- UGC Marquee -->
     <section class="section">
         <div class="container">
             <h2 class="section-title">Ellos ya confían en NEURAX</h2>
             <div class="marquee">
-                <div class="marquee-track" id="marqueeTrack">
-                    <!-- Placeholders de clientes -->
-                    <div class="marquee-item"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='340' viewBox='0 0 240 340'%3E%3Crect fill='%23f2f0eb' width='240' height='340' rx='16'/%3E%3Ctext x='120' y='170' text-anchor='middle' fill='%237a7d7c' font-size='14'%3ECliente 1%3C/text%3E%3C/svg%3E" alt="Cliente 1"></div>
-                    <div class="marquee-item"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='340' viewBox='0 0 240 340'%3E%3Crect fill='%23f2f0eb' width='240' height='340' rx='16'/%3E%3Ctext x='120' y='170' text-anchor='middle' fill='%237a7d7c' font-size='14'%3ECliente 2%3C/text%3E%3C/svg%3E" alt="Cliente 2"></div>
-                    <!-- Duplicar para marquee infinito -->
-                    <div class="marquee-item"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='340' viewBox='0 0 240 340'%3E%3Crect fill='%23f2f0eb' width='240' height='340' rx='16'/%3E%3Ctext x='120' y='170' text-anchor='middle' fill='%237a7d7c' font-size='14'%3ECliente 1%3C/text%3E%3C/svg%3E" alt="Cliente 1"></div>
-                    <div class="marquee-item"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='340' viewBox='0 0 240 340'%3E%3Crect fill='%23f2f0eb' width='240' height='340' rx='16'/%3E%3Ctext x='120' y='170' text-anchor='middle' fill='%237a7d7c' font-size='14'%3ECliente 2%3C/text%3E%3C/svg%3E" alt="Cliente 2"></div>
+                <div class="marquee-track">
+                    <div class="marquee-item"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='340' viewBox='0 0 240 340'%3E%3Crect fill='%23f2f0eb' width='240' height='340' rx='16'/%3E%3Ctext x='120' y='170' text-anchor='middle' fill='%237a7d7c' font-size='14'%3ECliente 1%3C/text%3E%3C/svg%3E" alt="Cliente"></div>
+                    <div class="marquee-item"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='340' viewBox='0 0 240 340'%3E%3Crect fill='%23f2f0eb' width='240' height='340' rx='16'/%3E%3Ctext x='120' y='170' text-anchor='middle' fill='%237a7d7c' font-size='14'%3ECliente 2%3C/text%3E%3C/svg%3E" alt="Cliente"></div>
+                    <div class="marquee-item"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='340' viewBox='0 0 240 340'%3E%3Crect fill='%23f2f0eb' width='240' height='340' rx='16'/%3E%3Ctext x='120' y='170' text-anchor='middle' fill='%237a7d7c' font-size='14'%3ECliente 1%3C/text%3E%3C/svg%3E" alt="Cliente"></div>
+                    <div class="marquee-item"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='340' viewBox='0 0 240 340'%3E%3Crect fill='%23f2f0eb' width='240' height='340' rx='16'/%3E%3Ctext x='120' y='170' text-anchor='middle' fill='%237a7d7c' font-size='14'%3ECliente 2%3C/text%3E%3C/svg%3E" alt="Cliente"></div>
                 </div>
             </div>
         </div>
@@ -303,7 +461,7 @@
             </div>
             <div style="flex:1; min-width:300px;">
                 <h2>Resultados comprobados</h2>
-                <p>Basado en encuestas a más de <strong>1.000 usuarios</strong> de NEURAX durante 60 días.</p>
+                <p>Encuestas a más de 1.000 usuarios de NEURAX.</p>
                 <div style="display:flex; flex-direction:column; gap:1rem; margin-top:1rem;">
                     <div><strong>95%</strong> notó mayor claridad mental</div>
                     <div><strong>87%</strong> redujo el sobrepensamiento</div>
@@ -326,7 +484,7 @@
                 </div>
                 <div style="background:#fff; padding:1.5rem; border-radius:var(--radius-lg); box-shadow:0 4px 16px rgba(0,0,0,0.06);">
                     <div style="width:100%; height:200px; background:var(--bg-secondary); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; margin-bottom:1rem;">👨</div>
-                    <p>"Noté que mi recuperación después del gimnasio mejoró un montón. Ya no me siento tan fatigado."</p>
+                    <p>"Noté que mi recuperación después del gimnasio mejoró un montón."</p>
                     <strong>— Diego R.</strong>
                 </div>
                 <div style="background:#fff; padding:1.5rem; border-radius:var(--radius-lg); box-shadow:0 4px 16px rgba(0,0,0,0.06);">
@@ -339,17 +497,28 @@
     </section>
 
     <!-- Explicación breve -->
-    <section class="section bg-dark">
-        <div class="container" style="text-align:center;">
-            <h2 style="color:#fff;">¿Por qué NEURAX es diferente?</h2>
-            <p style="max-width:700px; margin:1rem auto; color:#ccc;">
-                No es un estimulante ni un sedante. Es un regulador inteligente que ayuda a tu sistema nervioso a encontrar el equilibrio natural. Magnesio L-Treonato, L-Teanina, Melena de León y Ashwagandha trabajan juntos para que rindas, te recuperes y descanses como tu cuerpo necesita.
-            </p>
-            <a href="#" class="btn-nav" style="display:inline-block; margin-top:1rem;">Quiero probarlo</a>
+    <!-- Explicación breve (rediseñada) -->
+<section class="section bg-dark">
+    <div class="container" style="display:flex; gap:3rem; align-items:center; flex-wrap:wrap;">
+        <!-- Imagen lado izquierdo -->
+        <div style="flex:1; min-width:280px;">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500' viewBox='0 0 500 500'%3E%3Crect fill='%233d6b55' width='500' height='500' rx='28'/%3E%3Ccircle cx='250' cy='250' r='100' fill='none' stroke='%23c9a96e' stroke-width='4'/%3E%3Ctext x='250' y='220' text-anchor='middle' fill='%23fafaf8' font-family='serif' font-size='28' font-weight='bold'%3ENEURAX%3C/text%3E%3Ctext x='250' y='280' text-anchor='middle' fill='%23c9a96e' font-size='18'%3EEquilibrio real%3C/text%3E%3C/svg%3E" 
+                 alt="NEURAX equilibrio del sistema nervioso" 
+                 style="width:100%; border-radius:var(--radius-xl); box-shadow:0 16px 40px rgba(0,0,0,0.3);">
         </div>
-    </section>
+        <!-- Texto lado derecho -->
+        <div style="flex:1; min-width:280px; color:var(--text-light);">
+            <h2 style="color:#fff; font-size:2rem; margin-bottom:1.2rem;">¿Por qué NEURAX es diferente?</h2>
+            <p style="font-size:1.1rem; line-height:1.7; margin-bottom:1.5rem; color:#d5d5cf;">
+                No es un estimulante ni un sedante. Es un <strong style="color:var(--accent-gold);">regulador inteligente</strong> que ayuda a tu sistema nervioso a encontrar el equilibrio natural. 
+                Magnesio L-Treonato, L-Teanina, Melena de León y Ashwagandha trabajan juntos para que rindas, te recuperes y descanses como tu cuerpo necesita.
+            </p>
+            <a href="#" class="btn-nav" style="display:inline-block; padding:0.8rem 2rem; font-size:1rem;">Quiero probarlo</a>
+        </div>
+    </div>
+</section>
 
-    <!-- Ingredientes con slider manual -->
+    <!-- Ingredientes slider -->
     <section class="section">
         <div class="container">
             <h2 class="section-title">🌿 Ingredientes premium</h2>
@@ -384,13 +553,13 @@
         </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQ final -->
     <section class="section bg-light">
         <div class="container" style="max-width:800px; margin:0 auto;">
             <h2 class="section-title">❓ Preguntas frecuentes</h2>
             <div class="faq-item">
                 <button class="faq-question">¿Cómo se toma? <span>▼</span></button>
-                <div class="faq-answer"><p>Dos cápsulas al día con una comida. Constancia para mejores resultados.</p></div>
+                <div class="faq-answer"><p>Dos cápsulas al día con una comida.</p></div>
             </div>
             <div class="faq-item">
                 <button class="faq-question">¿Tiene contraindicaciones? <span>▼</span></button>
@@ -403,14 +572,13 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <p>© 2026 NEURAX®. Suplemento dietario. No reemplaza alimentación equilibrada.</p>
         <p><a href="index.html">← Volver al inicio</a></p>
     </footer>
 
     <script>
-        // Datos de galería
+        // Galería
         const mainImages = [
             `<svg viewBox="0 0 200 300"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#e8e4da"/><stop offset="100%" stop-color="#d5cfc0"/></linearGradient></defs><rect x="55" y="40" width="90" height="200" rx="16" fill="url(#g1)" stroke="#c0b8a8" stroke-width="2"/><rect x="62" y="80" width="76" height="120" rx="8" fill="#1a1d1c"/><text x="100" y="130" text-anchor="middle" fill="#c9a96e" font-family="serif" font-weight="bold" font-size="16">NEURAX</text><rect x="60" y="245" width="80" height="18" rx="9" fill="#3d6b55"/><text x="100" y="258" text-anchor="middle" fill="#fff" font-size="8">60 CÁPSULAS</text></svg>`,
             `<svg viewBox="0 0 200 300"><rect x="65" y="40" width="70" height="200" rx="12" fill="#d5cfc0" stroke="#b0a898" stroke-width="2"/><rect x="70" y="90" width="60" height="110" rx="6" fill="#2a2d2c"/><text x="100" y="148" text-anchor="middle" fill="#c9a96e" font-family="serif" font-weight="bold" font-size="22">N</text><rect x="68" y="245" width="64" height="16" rx="8" fill="#3d6b55"/></svg>`,
@@ -433,15 +601,14 @@
 
         // Bundles
         const packs = [
-            { id:1, name:'1 Frasco (30 días)', price:24990, old:32990, saving:8000 },
-            { id:2, name:'2 Frascos (60 días)', price:44990, old:54990, saving:10000, tag:'Más elegido' },
-            { id:3, name:'3 Frascos (90 días)', price:59990, old:74980, saving:14990, tag:'Mejor opción' },
-            { id:4, name:'6 Frascos (180 días)', price:109990, old:149960, saving:39970, tag:'Descuento exclusivo' }
+            { id:1, name:'1 Frasco (30 días)', price:24990, old:32990 },
+            { id:2, name:'2 Frascos (60 días)', price:44990, old:54990, tag:'Más elegido' },
+            { id:3, name:'3 Frascos (90 días)', price:59990, old:74980, tag:'Mejor opción' },
+            { id:4, name:'6 Frascos (180 días)', price:109990, old:149960, tag:'Descuento exclusivo' }
         ];
         let currentPack = packs[0];
         const bundleContainer = document.getElementById('bundleContainer');
         const cartTotal = document.getElementById('cartTotal');
-
         function renderBundles() {
             bundleContainer.innerHTML = packs.map(p => `
                 <div class="bundle-card ${p.id === currentPack.id ? 'active' : ''}" data-id="${p.id}">
@@ -449,7 +616,7 @@
                     <div class="bundle-radio"></div>
                     <div class="bundle-info">
                         <div class="bundle-title">${p.name}</div>
-                        <div class="bundle-desc">${p.saving ? `Ahorrás $${p.saving.toLocaleString('es-ES')}` : ''}</div>
+                        <div class="bundle-desc">${p.old ? `Ahorrás $${(p.old-p.price).toLocaleString('es-ES')}` : ''}</div>
                     </div>
                     <div class="bundle-price">
                         <span class="main-price">$${p.price.toLocaleString('es-ES')}</span>
@@ -468,9 +635,16 @@
             cartTotal.textContent = `$${currentPack.price.toLocaleString('es-ES')}`;
         }
         renderBundles();
-
         document.getElementById('addToCartBtn').addEventListener('click', () => {
             alert(`✅ Agregaste ${currentPack.name} al carrito por $${currentPack.price.toLocaleString('es-ES')}.`);
+        });
+
+        // Hero FAQ acordeón
+        document.querySelectorAll('.hero-faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                item.classList.toggle('open');
+            });
         });
 
         // Timeline scroll spy
@@ -478,25 +652,39 @@
         window.addEventListener('scroll', () => {
             timelineItems.forEach(item => {
                 const rect = item.getBoundingClientRect();
-                const windowHeight = window.innerHeight;
-                if (rect.top < windowHeight * 0.7) {
+                if (rect.top < window.innerHeight * 0.75) {
                     item.classList.add('active');
                 }
             });
         });
 
-        // Ingredientes slider manual
+        // Ingredientes slider
         const ingTrack = document.getElementById('ingredientTrack');
         document.getElementById('ingredientNext').addEventListener('click', () => ingTrack.scrollBy({ left:320, behavior:'smooth' }));
         document.getElementById('ingredientPrev').addEventListener('click', () => ingTrack.scrollBy({ left:-320, behavior:'smooth' }));
 
-        // FAQ acordeón
+        // FAQ final acordeón
         document.querySelectorAll('.faq-question').forEach(btn => {
             btn.addEventListener('click', () => {
                 const item = btn.parentElement;
                 item.classList.toggle('open');
             });
         });
+
+
+        // Menú móvil
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const navbarLinks = document.getElementById('navbarLinks');
+if (mobileMenuToggle && navbarLinks) {
+    mobileMenuToggle.addEventListener('click', () => {
+        navbarLinks.classList.toggle('active');
+    });
+    document.querySelectorAll('.navbar-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navbarLinks.classList.remove('active');
+        });
+    });
+}
     </script>
 </body>
 </html>
