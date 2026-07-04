@@ -9,36 +9,45 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-primary: #fafaf8;
-            --bg-secondary: #f2f0eb;
-            --bg-dark: #1a1d1c;
-            --bg-darker: #121514;
-            --text-primary: #1a1d1c;
-            --text-secondary: #4a4d4c;
-            --text-light: #fafaf8;
-            --text-muted: #7a7d7c;
-            --accent-gold: #c9a96e;
-            --accent-gold-light: #d4b87a;
-            --accent-gold-dark: #b8944a;
-            --accent-green: #3d6b55;
-            --accent-green-light: #4e8a6b;
-            --accent-green-dark: #2d4f3f;
-            --border-subtle: #e0ded8;
-            --border-medium: #d0cdc5;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
-            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
-            --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.16);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 20px;
-            --radius-xl: 28px;
-            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            --max-width: 1200px;
-            --max-width-narrow: 900px;
-        }
+      :root {
+    /* 🧠 Fondos principales */
+    --bg-primary: #FBFBFA;          /* Blanco Lino – lienzo limpio */
+    --bg-secondary: #D6E0E6;        /* Azul Bruma – enfoque, concentración */
+    --bg-dark: #2D3134;             /* Gris Carbón Suave – fondos oscuros */
+    --bg-darker: #1F2325;           /* Versión más profunda del gris para contraste extra */
+
+    /* 🖊️ Textos */
+    --text-primary: #2D3134;        /* Texto principal */
+    --text-secondary: #5A5E61;      /* Texto secundario */
+    --text-light: #FBFBFA;          /* Texto sobre fondos oscuros */
+    --text-muted: #8B9094;          /* Texto atenuado */
+
+    /* ✨ Acentos (Azul Bruma en lugar de dorado) */
+    --accent-gold: #9BB0BC;         /* Azul Bruma intenso – botones, enlaces */
+    --accent-gold-light: #BCC9D1;   /* Hover más claro */
+    --accent-gold-dark: #7F96A3;    /* Hover más oscuro */
+
+    /* 🌿 Acentos verdes (para badges y elementos de confianza) */
+    --accent-green: #8FAF9A;        /* Verde suave */
+    --accent-green-light: #A3C4AE;
+    --accent-green-dark: #6B8F7A;
+
+    /* Bordes, sombras, radios y transiciones (sin cambios) */
+    --border-subtle: #E0DED8;
+    --border-medium: #D0CDC5;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
+    --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.16);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --max-width: 1200px;
+    --max-width-narrow: 900px;
+}
 
         * {
             margin: 0;
@@ -806,23 +815,124 @@
 
         /* ── Footer ── */
         .footer {
-            background: var(--bg-darker);
-            color: #a0a09a;
-            text-align: center;
-            padding: 2.5rem 1.5rem;
-            font-size: 0.85rem;
-        }
-        .footer a {
-            color: var(--accent-gold-light);
-            text-decoration: none;
-        }
-        .footer-links {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
+    background: var(--bg-darker);
+    color: var(--text-muted);
+    padding: 3rem 1.5rem 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+.footer__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+}
+.footer__brand {
+    flex: 1 1 220px;
+    text-align: center;
+}
+.footer__logo {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-light);
+    text-decoration: none;
+}
+.footer__logo span {
+    color: var(--accent-gold);
+}
+.footer__tagline {
+    margin: 0.3rem 0 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+.footer__links, .footer__contact {
+    flex: 1 1 160px;
+}
+.footer__links h4, .footer__contact h4 {
+    color: var(--text-light);
+    margin: 0 0 0.6rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+}
+.footer__links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.footer__links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s;
+}
+.footer__links a:hover {
+    color: var(--accent-gold);
+}
+.footer__social-link svg {
+    stroke: currentColor;
+}
+.footer__contact p {
+    margin: 0.4rem 0;
+    color: var(--text-muted);
+}
+.footer__bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 2rem;
+    padding-top: 1.2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* AJUSTE CRÍTICO PARA MÓVIL: eliminar espacios heredados */
+@media (max-width: 768px) {
+    .footer {
+        padding: 1.5rem 1rem 1rem;
+    }
+    .footer__inner {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;          /* espacio controlado entre bloques */
+        text-align: center;
+    }
+    /* Resetear márgenes internos */
+    .footer__brand,
+    .footer__links,
+    .footer__contact {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    .footer__tagline {
+        margin-top: 0.2rem;
+    }
+    .footer__links h4,
+    .footer__contact h4 {
+        margin-bottom: 0.3rem;
+    }
+    .footer__links ul {
+        gap: 0.3rem;
+    }
+    .footer__contact p {
+        margin: 0.2rem 0;
+    }
+    .footer__bottom {
+        margin-top: 1rem;
+        padding-top: 0.8rem;
+    }
+}
 
         /* ── Animaciones scroll ── */
         .fade-in {
@@ -1256,16 +1366,45 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-links">
-            <a href="#beneficios">Beneficios</a>
-            <a href="#que-es">Qué es</a>
-            <a href="#ingredientes">Ingredientes</a>
-            <a href="#faq">FAQ</a>
-            <a href="productos.html">Productos</a>
+    <div class="footer__inner">
+        <!-- Marca -->
+        <div class="footer__brand">
+            <a href="index.html" class="footer__logo">NEURAX<span>®</span></a>
+            <p class="footer__tagline">Regulador Inteligente del Sistema Nervioso.</p>
         </div>
-        <p>© 2026 NEURAX®. Todos los derechos reservados.</p>
-        <p style="margin-top:0.5rem;">Suplemento dietario · Consultá a tu médico antes de consumir · No reemplaza una alimentación equilibrada.</p>
-    </footer>
+
+        <!-- Enlaces + Instagram -->
+        <div class="footer__links">
+            <h4>Enlaces</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li>
+                    <a href="#" aria-label="Instagram" class="footer__social-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                        Instagram
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Contacto -->
+        <div class="footer__contact">
+            <h4>Contacto</h4>
+            <p>📧 info@neurax.com</p>
+            <p>📱 +54 9 11 1234-5678</p>
+            <p>📍 Buenos Aires, Argentina</p>
+        </div>
+    </div>
+
+    <div class="footer__bottom">
+        <p>© 2026 NEURAX®. Todos los derechos reservados. Suplemento dietario. Consultá a tu médico antes de consumir.</p>
+    </div>
+</footer>
 
     <!-- Scripts -->
     <script>

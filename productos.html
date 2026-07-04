@@ -10,18 +10,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #fafaf8;
-            --bg-secondary: #f2f0eb;
-            --bg-dark: #1a1d1c;
-            --text-primary: #1a1d1c;
-            --text-secondary: #4a4d4c;
-            --text-light: #fafaf8;
-            --text-muted: #7a7d7c;
-            --accent-gold: #c9a96e;
-            --accent-gold-dark: #b8944a;
-            --accent-green: #3d6b55;
-            --border-subtle: #e0ded8;
-            --border-medium: #d0cdc5;
+            --bg-primary: #FBFBFA;
+            --bg-secondary: #D6E0E6;
+            --bg-dark: #2D3134;
+            --bg-darker: #1F2325;
+            --text-primary: #2D3134;
+            --text-secondary: #5A5E61;
+            --text-light: #FBFBFA;
+            --text-muted: #8B9094;
+            --accent-gold: #9BB0BC;
+            --accent-gold-light: #BCC9D1;
+            --accent-gold-dark: #7F96A3;
+            --accent-green: #8FAF9A;
+            --accent-green-light: #A3C4AE;
+            --accent-green-dark: #6B8F7A;
+            --border-subtle: #E0DED8;
+            --border-medium: #D0CDC5;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 20px;
@@ -32,6 +39,7 @@
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Inter', sans-serif;
         }
+
         * { margin:0; padding:0; box-sizing:border-box; }
         html { scroll-behavior:smooth; font-size:16px; }
         body {
@@ -44,326 +52,250 @@
         h1,h2,h3,h4 { font-family: var(--font-heading); font-weight:600; }
         .container { max-width: var(--max-width); margin:0 auto; padding:0 1.5rem; }
 
-        /* Navbar */
-       .navbar {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(250, 250, 248, 0.92);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-subtle);
-            transition: all var(--transition-smooth);
-            padding: 0 1.5rem;
+        /* ─── NAVBAR ─── */
+        .navbar {
+            position:sticky; top:0; z-index:1000;
+            background: rgba(250,250,248,0.92); backdrop-filter:blur(16px);
+            border-bottom:1px solid var(--border-subtle);
         }
         .navbar-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 64px;
+            display:flex; align-items:center; justify-content:space-between;
+            height:64px; max-width: var(--max-width); margin:0 auto; padding:0 1.5rem;
         }
-        .navbar-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: 0.02em;
-            white-space: nowrap;
-        }
-        .navbar-logo span {
-            color: var(--accent-gold);
-        }
-        .navbar-links {
-            display: flex;
-            gap: 1.6rem;
-            list-style: none;
-            align-items: center;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
-        .navbar-links a {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color var(--transition-fast);
-            white-space: nowrap;
-        }
-        .navbar-links a:hover {
-            color: var(--accent-gold-dark);
-        }
-        .btn-nav {
-            background: var(--accent-gold);
-            color: #fff !important;
-            padding: 0.5rem 1.4rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: all var(--transition-fast);
-            text-decoration: none;
-            white-space: nowrap;
-        }
-        .btn-nav:hover {
-            background: var(--accent-gold-dark);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
-        }
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.4rem;
-            color: var(--text-primary);
-        }
-        .mobile-menu-toggle svg {
-            width: 26px;
-            height: 26px;
+        .navbar-logo { font-family:var(--font-heading); font-size:1.5rem; font-weight:700; color:var(--text-primary); text-decoration:none; }
+        .navbar-logo span { color: var(--accent-gold); }
+        .navbar-links { display:flex; gap:1.6rem; list-style:none; align-items:center; }
+        .navbar-links a { text-decoration:none; color:var(--text-secondary); font-size:0.9rem; font-weight:500; }
+        .navbar-links a:hover { color: var(--accent-gold-dark); }
+        .btn-nav { background:var(--accent-gold); color:#fff!important; padding:0.5rem 1.4rem; border-radius:50px; font-weight:600; }
+        .mobile-menu-toggle { display:none; background:none; border:none; cursor:pointer; padding:0.4rem; }
+        .mobile-menu-toggle svg { width:26px; height:26px; }
+        @media (max-width:768px) {
+            .navbar-links { display:none; position:absolute; top:64px; left:0; right:0; background:rgba(250,250,248,0.97); backdrop-filter:blur(16px); flex-direction:column; padding:1.5rem; gap:1rem; border-bottom:1px solid var(--border-subtle); box-shadow:var(--shadow-lg); }
+            .navbar-links.active { display:flex; }
+            .mobile-menu-toggle { display:block; }
         }
 
-        @media (max-width: 768px) {
-            .navbar-links {
-                display: none;
-                position: absolute;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: rgba(250, 250, 248, 0.97);
-                backdrop-filter: blur(16px);
-                flex-direction: column;
-                padding: 1.5rem;
-                gap: 1rem;
-                border-bottom: 1px solid var(--border-subtle);
-                box-shadow: var(--shadow-lg);
-            }
-            .navbar-links.active {
-                display: flex;
-            }
-            .mobile-menu-toggle {
-                display: block;
-            }
-        }
-        /* Hero producto: galería sticky + columna derecha extendida */
-        .product-hero {
-            display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start;
-            padding:3rem 0 0; margin-bottom:4rem;
-        }
-        .gallery-col { position: sticky; top: 100px; }
+        /* ─── HERO ─── */
+        .product-hero { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; padding:3rem 0 0; margin-bottom:4rem; }
+        .gallery-col { position:sticky; top:100px; }
         .main-img {
             aspect-ratio:1/1.2; border-radius:var(--radius-xl); overflow:hidden;
             background:var(--bg-secondary); display:flex; align-items:center; justify-content:center;
             box-shadow:0 12px 40px rgba(0,0,0,0.12);
         }
-        .main-img svg { width:80%; transition:0.3s; }
+        .main-img img { width:100%; height:100%; object-fit:cover; }
         .thumbnails { display:flex; gap:0.8rem; margin-top:1.5rem; }
         .thumb {
             width:64px; height:64px; border-radius:var(--radius-sm); cursor:pointer;
             border:2px solid transparent; overflow:hidden; background:var(--bg-secondary);
-            display:flex; align-items:center; justify-content:center;
         }
+        .thumb img { width:100%; height:100%; object-fit:cover; }
         .thumb.active { border-color:var(--accent-gold); }
-
         .product-info > * { margin-bottom:1.2rem; }
-        .badge {
-            display:inline-flex; align-items:center; gap:0.5rem;
-            background: #f0ede5; border:1px solid var(--border-medium);
-            border-radius:50px; padding:0.3rem 1rem; font-size:0.8rem; font-weight:600;
-            color:var(--accent-green); text-transform:uppercase;
-        }
+        .badge { display:inline-flex; align-items:center; gap:0.5rem; background:#f0ede5; border:1px solid var(--border-medium); border-radius:50px; padding:0.3rem 1rem; font-size:0.8rem; font-weight:600; color:var(--accent-green-dark); text-transform:uppercase; }
         .checklist { display:flex; flex-direction:column; gap:0.8rem; list-style:none; }
         .checklist li { display:flex; align-items:flex-start; gap:0.5rem; font-size:0.9rem; }
-
-        /* Bundles */
+        .bundles { }
         .bundle-card {
             position:relative; display:flex; align-items:center; gap:12px;
             padding:14px 15px; border:2px solid #e7d8db; border-radius:14px;
             background:#fff; cursor:pointer; transition:0.2s; margin-bottom:10px;
         }
         .bundle-card.active { border-color:var(--accent-gold); background:#fefbf5; }
-        .bundle-radio {
-            width:22px; height:22px; border-radius:50%; border:2px solid #dbb8bf;
-            display:flex; align-items:center; justify-content:center; flex-shrink:0;
-        }
+        .bundle-radio { width:22px; height:22px; border-radius:50%; border:2px solid #dbb8bf; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
         .bundle-card.active .bundle-radio { border-color:var(--accent-gold-dark); }
-        .bundle-card.active .bundle-radio::after {
-            content:""; width:10px; height:10px; border-radius:50%; background:var(--accent-gold-dark);
-        }
+        .bundle-card.active .bundle-radio::after { content:""; width:10px; height:10px; border-radius:50%; background:var(--accent-gold-dark); }
         .bundle-info { flex:1; }
         .bundle-title { font-size:18px; font-weight:700; }
         .bundle-desc { font-size:14px; color:var(--text-muted); }
         .bundle-price { text-align:right; }
         .main-price { font-size:18px; font-weight:800; color:var(--accent-green); }
         .old-price { font-size:13px; color:#b49aa0; text-decoration:line-through; }
-        .bundle-tag {
-            position:absolute; top:-14px; right:12px; background:var(--accent-gold);
-            color:#fff; font-size:11px; font-weight:800; padding:5px 11px; border-radius:999px;
-        }
+        .bundle-tag { position:absolute; top:-14px; right:12px; background:var(--accent-gold); color:#fff; font-size:11px; font-weight:800; padding:5px 11px; border-radius:999px; }
         .btn-add {
             width:100%; padding:16px; border:none; border-radius:14px;
             background:var(--accent-gold); color:#fff; font-weight:800; font-size:18px;
-            cursor:pointer; transition:0.2s; margin-top:1rem;
+            cursor:pointer; margin-top:1rem; transition:0.2s;
         }
         .btn-add:hover { background:var(--accent-gold-dark); transform:translateY(-1px); }
         .stock-alert { display:flex; align-items:center; gap:8px; margin:1rem 0; font-size:13px; }
         .stock-dot { width:10px; height:10px; border-radius:50%; background:#ff4d4f; animation:pulse 1.4s infinite; }
         @keyframes pulse { 0%,100%{ transform:scale(1); opacity:.85; } 50%{ transform:scale(1.28); opacity:1; } }
-
-        /* Marketplace integrado */
-        .marketplace-card {
-            background:#fff; border:1px solid var(--border-subtle); border-radius:var(--radius-lg);
-            padding:1.5rem; margin:1.5rem 0; box-shadow:0 4px 12px rgba(0,0,0,0.04);
-        }
+        .marketplace-card { background:#fff; border:1px solid var(--border-subtle); border-radius:var(--radius-lg); padding:1.5rem; margin:1.5rem 0; box-shadow:0 4px 12px rgba(0,0,0,0.04); }
         .seller-top { display:flex; align-items:center; gap:12px; margin-bottom:1rem; }
-        .seller-avatar {
-            width:48px; height:48px; border-radius:12px; background:var(--bg-secondary);
-            display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--accent-gold);
-        }
+        .seller-avatar { width:48px; height:48px; border-radius:12px; background:var(--bg-secondary); display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--accent-gold); }
         .seller-name { font-weight:700; font-size:1rem; }
-        .seller-badge {
-            display:inline-block; background:var(--accent-gold); color:#fff; font-size:0.7rem;
-            padding:2px 8px; border-radius:4px; margin-left:8px;
-        }
+        .seller-badge { display:inline-block; background:var(--accent-gold); color:#fff; font-size:0.7rem; padding:2px 8px; border-radius:4px; margin-left:8px; }
         .seller-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:0.5rem; text-align:center; margin:1rem 0; }
         .seller-stat { font-size:0.8rem; color:var(--text-muted); }
         .seller-stat strong { display:block; color:var(--text-primary); font-size:1.1rem; }
-
-        /* Hero FAQ acordeón */
         .hero-faq { border-top:1px solid var(--border-subtle); margin-top:1.5rem; padding-top:1rem; }
         .hero-faq-item { border-bottom:1px solid var(--border-subtle); }
-        .hero-faq-question {
-            width:100%; text-align:left; padding:0.8rem 0; background:none; border:none;
-            font-weight:600; cursor:pointer; display:flex; justify-content:space-between;
-            font-size:0.95rem;
-        }
-        .hero-faq-answer {
-            max-height:0; overflow:hidden; transition:max-height 0.3s ease; font-size:0.9rem; color:var(--text-secondary);
-        }
-        .hero-faq-item.open .hero-faq-answer { max-height:200px; padding-bottom:0.8rem; }
+        .hero-faq-question { width:100%; text-align:left; padding:0.8rem 0; background:none; border:none; font-weight:600; cursor:pointer; display:flex; justify-content:space-between; font-size:0.95rem; }
+        .hero-faq-answer { max-height:0; overflow:hidden; transition:max-height 0.3s; font-size:0.9rem; color:var(--text-secondary); }
+        .hero-faq-item.open .hero-faq-answer { max-height: 800px; padding-bottom: 0.8rem; }
 
-        /* Secciones generales */
+        /* ─── SECCIONES ─── */
         .section { padding:4rem 0; }
         .section-title { font-size:2rem; margin-bottom:1.5rem; text-align:center; }
         .bg-light { background:var(--bg-secondary); }
         .bg-dark { background:var(--bg-dark); color:var(--text-light); }
+        .bg-lavender { background:#E6E1EC; }
 
         /* Timeline alternado */
         .timeline { position:relative; max-width:900px; margin:0 auto; padding:0 1rem; }
-        .timeline::before {
-            content:""; position:absolute; left:50%; top:0; bottom:0; width:2px;
-            background:var(--accent-gold); opacity:0.3; transform:translateX(-50%);
-        }
-        .timeline-item {
-            display:flex; align-items:flex-start; margin-bottom:3rem; position:relative;
-            opacity:0.4; transition:opacity 0.3s;
-        }
+        .timeline::before { content:""; position:absolute; left:50%; top:0; bottom:0; width:2px; background:var(--accent-gold); opacity:0.3; transform:translateX(-50%); }
+        .timeline-item { display:flex; align-items:flex-start; margin-bottom:3rem; position:relative; opacity:0.4; transition:opacity 0.3s; }
         .timeline-item.active { opacity:1; }
         .timeline-item.left { flex-direction:row; }
         .timeline-item.right { flex-direction:row-reverse; }
-        .timeline-card {
-            width:45%; background:#fff; border-radius:var(--radius-lg); padding:1.5rem;
-            box-shadow:0 4px 16px rgba(0,0,0,0.06);
-        }
-        .timeline-card img {
-            width:100%; height:200px; object-fit:cover; border-radius:var(--radius-md); margin-bottom:1rem;
-        }
-        .timeline-item::before {
-            content:""; position:absolute; left:50%; top:20px; width:14px; height:14px;
-            border-radius:50%; background:var(--accent-gold); border:3px solid var(--bg-primary);
-            transform:translate(-50%,0); z-index:2;
-        }
+        .timeline-card { width:45%; background:#fff; border-radius:var(--radius-lg); padding:1.5rem; box-shadow:0 4px 16px rgba(0,0,0,0.06); }
+        .timeline-card img { width:100%; height:200px; object-fit:cover; border-radius:var(--radius-md); margin-bottom:1rem; }
+        .timeline-item::before { content:""; position:absolute; left:50%; top:20px; width:14px; height:14px; border-radius:50%; background:var(--accent-gold); border:3px solid var(--bg-primary); transform:translate(-50%,0); z-index:2; }
 
-        /* UGC Marquee */
-        .marquee { overflow:hidden; display:flex; gap:1rem; }
+        /* Marquee */
+        .marquee { overflow:hidden; }
         .marquee-track { display:flex; gap:1rem; animation:scroll 20s linear infinite; }
         .marquee-item { width:240px; flex-shrink:0; border-radius:var(--radius-lg); overflow:hidden; }
         .marquee-item img { width:100%; height:340px; object-fit:cover; }
         @keyframes scroll { 0%{ transform:translateX(0); } 100%{ transform:translateX(-50%); } }
 
         /* Ingredientes slider */
-       /* Ingredientes slider rediseñado */
-.ingredient-slider {
-    position: relative;
-    padding: 0 48px; /* espacio para las flechas laterales */
-}
-.ingredient-track {
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 0.5rem;
-    scrollbar-width: none;           /* Firefox */
-    -ms-overflow-style: none;        /* IE/Edge */
-}
-.ingredient-track::-webkit-scrollbar {
-    display: none;                   /* Chrome/Safari */
-}
-.ingredient-card {
-    flex: 0 0 300px;
-    scroll-snap-align: start;
-    background: #fff;
-    border-radius: var(--radius-lg);
-    padding: 1.5rem;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-}
-.ingredient-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: var(--radius-md);
-}
-/* Flechas posicionadas a los costados */
-.slider-arrows {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    transform: translateY(-50%);
-    display: flex;
-    justify-content: space-between;
-    pointer-events: none;   /* para que no bloqueen el scroll de las tarjetas */
-    z-index: 2;
-}
-.arrow-btn {
-    background: var(--accent-gold);
-    color: #fff;
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 1.2rem;
-    cursor: pointer;
-    pointer-events: auto;   /* permitir clics en las flechas */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    transition: background 0.2s;
-}
-.arrow-btn:hover {
-    background: var(--accent-gold-dark);
-}
-
-@media (max-width: 640px) {
-    .ingredient-slider {
-        padding: 0 36px; /* menos espacio en móviles */
-    }
-    .ingredient-card {
-        flex: 0 0 85%; /* tarjetas más anchas en pantallas chicas */
-    }
-}
+        .ingredient-slider { position:relative; padding:0 48px; }
+        .ingredient-track { display:flex; gap:1rem; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:0.5rem; scrollbar-width:none; -ms-overflow-style:none; }
+        .ingredient-track::-webkit-scrollbar { display:none; }
+        .ingredient-card { flex:0 0 300px; scroll-snap-align:start; background:#fff; border-radius:var(--radius-lg); padding:1.5rem; box-shadow:0 4px 16px rgba(0,0,0,0.06); }
+        .ingredient-card img { width:100%; height:200px; object-fit:cover; border-radius:var(--radius-md); }
+        .slider-arrows { position:absolute; top:50%; left:0; right:0; transform:translateY(-50%); display:flex; justify-content:space-between; pointer-events:none; z-index:2; }
+        .arrow-btn { background:var(--accent-gold); color:#fff; border:none; width:40px; height:40px; border-radius:50%; font-size:1.2rem; cursor:pointer; pointer-events:auto; box-shadow:0 2px 8px rgba(0,0,0,0.2); }
+        .arrow-btn:hover { background:var(--accent-gold-dark); }
 
         /* FAQ final */
         .faq-item { border-bottom:1px solid var(--border-subtle); }
-        .faq-question {
-            width:100%; text-align:left; padding:1rem 0; background:none; border:none;
-            font-weight:600; cursor:pointer; display:flex; justify-content:space-between;
-        }
+        .faq-question { width:100%; text-align:left; padding:1rem 0; background:none; border:none; font-weight:600; cursor:pointer; display:flex; justify-content:space-between; }
         .faq-answer { max-height:0; overflow:hidden; transition:0.3s; }
         .faq-item.open .faq-answer { max-height:500px; padding-bottom:1rem; }
 
-        /* Footer */
-        .footer { background:var(--bg-dark); color:#a0a09a; text-align:center; padding:2rem 1.5rem; font-size:0.85rem; }
-        .footer a { color:var(--accent-gold); text-decoration:none; }
+        .footer {
+    background: var(--bg-darker);
+    color: var(--text-muted);
+    padding: 3rem 1.5rem 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+.footer__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+}
+.footer__brand {
+    flex: 1 1 220px;
+    text-align: center;
+}
+.footer__logo {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-light);
+    text-decoration: none;
+}
+.footer__logo span {
+    color: var(--accent-gold);
+}
+.footer__tagline {
+    margin: 0.3rem 0 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+.footer__links, .footer__contact {
+    flex: 1 1 160px;
+}
+.footer__links h4, .footer__contact h4 {
+    color: var(--text-light);
+    margin: 0 0 0.6rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+}
+.footer__links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.footer__links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s;
+}
+.footer__links a:hover {
+    color: var(--accent-gold);
+}
+.footer__social-link svg {
+    stroke: currentColor;
+}
+.footer__contact p {
+    margin: 0.4rem 0;
+    color: var(--text-muted);
+}
+.footer__bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 2rem;
+    padding-top: 1.2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* AJUSTE CRÍTICO PARA MÓVIL: eliminar espacios heredados */
+@media (max-width: 768px) {
+    .footer {
+        padding: 1.5rem 1rem 1rem;
+    }
+    .footer__inner {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;          /* espacio controlado entre bloques */
+        text-align: center;
+    }
+    /* Resetear márgenes internos */
+    .footer__brand,
+    .footer__links,
+    .footer__contact {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    .footer__tagline {
+        margin-top: 0.2rem;
+    }
+    .footer__links h4,
+    .footer__contact h4 {
+        margin-bottom: 0.3rem;
+    }
+    .footer__links ul {
+        gap: 0.3rem;
+    }
+    .footer__contact p {
+        margin: 0.2rem 0;
+    }
+    .footer__bottom {
+        margin-top: 1rem;
+        padding-top: 0.8rem;
+    }
+}
 
         @media (max-width:900px) {
             .product-hero { grid-template-columns:1fr; }
@@ -372,31 +304,33 @@
             .timeline-item { flex-direction:column!important; padding-left:40px; }
             .timeline-item::before { left:20px; }
             .timeline-card { width:100%; }
+            .ingredient-slider { padding:0 36px; }
+            .ingredient-card { flex:0 0 85%; }
         }
     </style>
 </head>
 <body>
+    <!-- NAVBAR -->
     <nav class="navbar">
-    <div class="navbar-inner">
-        <a href="index.html" class="navbar-logo">NEURAX<span>®</span></a>
-        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menú">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-                <line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/>
-            </svg>
-        </button>
-        <ul class="navbar-links" id="navbarLinks">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="productos.html" class="btn-nav">Productos</a></li>
-        </ul>
-    </div>
-</nav>
+        <div class="navbar-inner">
+            <a href="index.html" class="navbar-logo">NEURAX<span>®</span></a>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menú">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+            </button>
+            <ul class="navbar-links" id="navbarLinks">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html" class="btn-nav">Productos</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <main class="container">
-        <!-- Hero -->
+        <!-- HERO -->
         <div class="product-hero">
             <div class="gallery-col">
                 <div class="main-img" id="mainImageContainer">
-                    <svg viewBox="0 0 200 300"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#e8e4da"/><stop offset="100%" stop-color="#d5cfc0"/></linearGradient></defs><rect x="55" y="40" width="90" height="200" rx="16" fill="url(#g1)" stroke="#c0b8a8" stroke-width="2"/><rect x="62" y="80" width="76" height="120" rx="8" fill="#1a1d1c"/><text x="100" y="130" text-anchor="middle" fill="#c9a96e" font-family="serif" font-weight="bold" font-size="16">NEURAX</text><rect x="60" y="245" width="80" height="18" rx="9" fill="#3d6b55"/><text x="100" y="258" text-anchor="middle" fill="#fff" font-size="8">60 CÁPSULAS</text></svg>
+                    <!-- IMAGEN: Frasco principal (800x1000px recomendado). Coloca tu imagen como img/frasco1.jpg -->
+                    <img src="img/frasco1.jpeg" alt="Frasco NEURAX">
                 </div>
                 <div class="thumbnails" id="thumbnails"></div>
             </div>
@@ -404,11 +338,14 @@
             <div class="info-col">
                 <div class="product-info">
                     <div class="badge">🧠 Nuevo lanzamiento</div>
-                    <h1 style="font-size:2.2rem;">NEURAX® Regulador Inteligente del Sistema Nervioso</h1>
+                    <h1 style="font-size:2.2rem;">NEURAX® - Recuperá el equilibrio de tu sistema nervioso</h1>
                     <ul class="checklist">
-                        <li>✅ Claridad mental y enfoque sin estimulantes</li>
-                        <li>✅ Equilibrio del sistema nervioso</li>
-                        <li>✅ Descanso reparador y manejo del estrés</li>
+                        <li>✅ Ayuda a que tu sistema nervioso funcione en equilibrio. Recuperá la concentración, el rendimiento y el descanso que tu mente necesita.</li>
+                        <li>✅ Su compuesto con treonato de magnesio es de absorción suave y directa, permitiendo que tu cerebro elimine la neblina de día, rinda al máximo y descanse profundamente de noche.</li>
+                        <li>✅ Único suplemento compuesto en Argentina enfocado en regular todo tu sistema nervioso de forma natural.</li>
+                        <li>✅ Descomprime el estrés acumulado. Restaura la concentración, el rendimiento limpio y el descanso naturales.</li>
+                        <li>✅ El treonato de magnesio equilibra la saturación mental, responsable de la falta de foco y el insomnio nocturno.</li>
+                        <li>✅ Regulación suave desde el primer día.</li>
                         <li>✅ 60 cápsulas vegetales · Sin TACC · Apto vegano</li>
                     </ul>
 
@@ -433,26 +370,44 @@
                             <div class="seller-stat">✔ Buena atención</div>
                             <div class="seller-stat">✔ Entrega a tiempo</div>
                         </div>
-                        <p style="font-size:0.8rem; color:var(--text-muted); text-align:center; margin-top:0.5rem;">MercadoLíder Platinum en suplementos naturales</p>
                     </div>
 
-                    <!-- Hero FAQ acordeón -->
                     <div class="hero-faq">
                         <div class="hero-faq-item">
                             <button class="hero-faq-question">¿Qué es NEURAX? <span>▼</span></button>
-                            <div class="hero-faq-answer"><p>NEURAX es un regulador inteligente del sistema nervioso. Su fórmula premium ayuda a equilibrar la respuesta al estrés, la claridad mental y el descanso reparador sin estimulantes ni sedantes.</p></div>
+                            <div class="hero-faq-answer"><p>NEURAX es un compuesto de treonato de magnesio y adaptógenos diseñado para regular todo tu sistema nervioso de forma natural. Su fórmula actúa sobre los procesos que se descalibran con el estrés y el ritmo diario, devolviéndole a tu mente la capacidad de concentrarse de día, rendir al máximo y alcanzar un descanso profundo de noche.
+<br></br>
+No es un estimulante ni un sedante: es una fórmula de diseño limpio que equilibra tu termostato biológico desde la raíz, apoyando el trabajo natural del cuerpo con una digestión ligera y sin generar dependencia.
+<br></br>
+Regulación suave desde el primer día: Sentís alivio y orden en tu rutina diaria.
+<br>
+Foco nítido y claridad: Desaparece la neblina cerebral y recuperás la concentración.
+<br>
+Rendimiento sostenido: Energía estable para tu día, sin bajones ni ansiedad.
+<br>
+Descanso profundo: Tu mente se relaja por completo al llegar la noche.</p>
+                        </div>
                         </div>
                         <div class="hero-faq-item">
                             <button class="hero-faq-question">Ingredientes <span>▼</span></button>
-                            <div class="hero-faq-answer"><p>🧠 Magnesio L-Treonato, 🍃 L-Teanina, 🍄 Melena de León, 🌿 Ashwagandha KSM-66®, ⚡ Vitamina B6. Cápsulas vegetales, sin TACC, apto vegano.</p></div>
+                            <div class="hero-faq-answer"><p>NEURAX incluye una fórmula compuesta de 4 ingredientes sinérgicos orientados a regular tu sistema nervioso, eliminar la neblina cerebral y optimizar tu descanso.<br></br></p>
+                                <p>🧠 Treonato de Magnesio: El mineral de alta absorción que cruza la barrera encefálica para regular el sistema nervioso sin pesadez digestiva. <br></br></p>
+                                <p>🍄 Melena de León: Hongo funcional de diseño limpio para el foco nítido y la claridad mental diaria. <br></br></p>
+                                <p>🌿 Ashwagandha KSM-66®: Adaptógeno de precisión para equilibrar el estrés cotidiano, regular el cortisol y apagar el ruido nocturno. <br></br></p>
+                                <p>🌱 L-Teanina: Aminoácido puro para una relajación profunda y un enfoque en calma, sin causar somnolencia. <br></br></p>
+                               </div>
                         </div>
                         <div class="hero-faq-item">
-                            <button class="hero-faq-question">¿Cómo se toma? <span>▼</span></button>
-                            <div class="hero-faq-answer"><p>Dos cápsulas al día, preferentemente con una comida. La constancia es clave.</p></div>
+                            <button class="hero-faq-question">¿Cómo se usa? <span>▼</span></button>
+                            <div class="hero-faq-answer"><p>🧠 Ingesta diaria en 2 pasos: Disfrutá de una porción por la mañana para activar el día, y otra por la noche para inducir la calma, masticando suavemente.
+<br></br>
+⏳ Constancia = resultados: Usalo todos los días, mañana y noche. La constancia celular acelera el equilibrio biológico y multiplica los beneficios.
+<br></br>
+🚶 Hábitos estables: No requiere cambios extremos, pero acompañar tus dosis con buena hidratación y descanso regular potencia la claridad mental.</p></div>
                         </div>
                         <div class="hero-faq-item">
                             <button class="hero-faq-question">Envíos <span>▼</span></button>
-                            <div class="hero-faq-answer"><p>📦 Envíos a todo el país. Despachamos en 48-72 hs hábiles. Recibirás tu número de seguimiento por email.</p></div>
+                            <div class="hero-faq-answer"><p>📦 Envíos a todo el país. Despachamos en 48-72 hs. Recibirás seguimiento por email.</p></div>
                         </div>
                     </div>
                 </div>
@@ -460,196 +415,337 @@
         </div>
     </main>
 
-    <!-- Evolución (timeline alternado) -->
+    <!-- EVOLUCIÓN -->
     <section class="section bg-light">
         <div class="container">
-            <h2 class="section-title">Tu evolución con NEURAX</h2>
+            <h2 class="section-title">Hacé que vivir en equilibrio vuelva a ser posible</h2>
             <div class="timeline">
                 <div class="timeline-item left">
                     <div class="timeline-card">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect fill='%23f0ede5' width='400' height='200'/%3E%3Ctext x='200' y='100' text-anchor='middle' fill='%234a4d4c' font-size='16'%3E🧠 Semana 1%3C/text%3E%3C/svg%3E" alt="Semana 1">
-                        <h4>Semana 1</h4>
-                        <p>Empezás a sentir mayor calma y claridad mental. Tu cuerpo comienza a equilibrarse.</p>
+                        <!-- IMAGEN: Semana 1 (400x200px). Coloca tu imagen como img/semana1.jpg -->
+                        <img src="img/timelaps1.png" alt="Semana 1">
+                        <h4>Los primeros días: Equilibrio inicial</h4><br>
+                        <p>El sistema nervioso empieza a regularse. <br>
+El ruido mental y la neblina diaria comienzan a ceder. Sentís una absorción suave, una claridad nítida para encarar tu rutina y una desconexión mucho más fluida al momento de ir a dormir desde las primeras tomas.</p>
                     </div>
                 </div>
                 <div class="timeline-item right">
                     <div class="timeline-card">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect fill='%23f0ede5' width='400' height='200'/%3E%3Ctext x='200' y='100' text-anchor='middle' fill='%234a4d4c' font-size='16'%3E🌙 Semana 3%3C/text%3E%3C/svg%3E" alt="Semana 3">
-                        <h4>Semana 3</h4>
-                        <p>El estrés pesa menos, dormís mejor y tu enfoque mejora notablemente.</p>
+                        <!-- IMAGEN: Semana 3 (400x200px). Coloca tu imagen como img/semana3.jpg -->
+                        <img src="img/timelaps2.jpeg" alt="Semana 3">
+                        <h4>Luego de 2 semanas: Consolidación</h4> <br>
+                        <p>La energía y el rendimiento limpio se estabilizan. <br>
+Los adaptógenos regulan la respuesta biológica al estrés. Desaparecen los bajones críticos de la tarde sin necesidad de recurrir a estimulantes, y la transición hacia un descanso profundo y constante se automatiza.</p>
                     </div>
                 </div>
                 <div class="timeline-item left">
                     <div class="timeline-card">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect fill='%23f0ede5' width='400' height='200'/%3E%3Ctext x='200' y='100' text-anchor='middle' fill='%234a4d4c' font-size='16'%3E✨ 2° Mes%3C/text%3E%3C/svg%3E" alt="2° Mes">
-                        <h4>2° Mes</h4>
-                        <p>El equilibrio es parte de tu vida. Rendís, te recuperás y descansás sin esfuerzo.</p>
+                        <!-- IMAGEN: 2° Mes (400x200px). Coloca tu imagen como img/mes2.jpg -->
+                        <img src="img/timelaps3.jpeg" alt="2° Mes">
+                        <h4>A los 28 días: Máximo potencial sostenido</h4>
+                        <p>Tu biología opera en su nivel óptimo. <br>
+Consolidás un sistema nervioso calibrado, capaz de sostener un alto nivel de foco nítido de día y una regeneración profunda de noche. Los beneficios se estabilizan: podés continuar con la toma diaria para mantener este estándar de rendimiento o regular tu dosis de mantenimiento a largo plazo.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- UGC Marquee -->
+    <!-- UGC MARQUEE -->
     <section class="section">
         <div class="container">
             <h2 class="section-title">Ellos ya confían en NEURAX</h2>
             <div class="marquee">
-                <div class="marquee-track">
-                    <div class="marquee-item"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='340' viewBox='0 0 240 340'%3E%3Crect fill='%23f2f0eb' width='240' height='340' rx='16'/%3E%3Ctext x='120' y='170' text-anchor='middle' fill='%237a7d7c' font-size='14'%3ECliente 1%3C/text%3E%3C/svg%3E" alt="Cliente"></div>
-                    <div class="marquee-item"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='340' viewBox='0 0 240 340'%3E%3Crect fill='%23f2f0eb' width='240' height='340' rx='16'/%3E%3Ctext x='120' y='170' text-anchor='middle' fill='%237a7d7c' font-size='14'%3ECliente 2%3C/text%3E%3C/svg%3E" alt="Cliente"></div>
-                    <div class="marquee-item"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='340' viewBox='0 0 240 340'%3E%3Crect fill='%23f2f0eb' width='240' height='340' rx='16'/%3E%3Ctext x='120' y='170' text-anchor='middle' fill='%237a7d7c' font-size='14'%3ECliente 1%3C/text%3E%3C/svg%3E" alt="Cliente"></div>
-                    <div class="marquee-item"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='340' viewBox='0 0 240 340'%3E%3Crect fill='%23f2f0eb' width='240' height='340' rx='16'/%3E%3Ctext x='120' y='170' text-anchor='middle' fill='%237a7d7c' font-size='14'%3ECliente 2%3C/text%3E%3C/svg%3E" alt="Cliente"></div>
+                <div class="marquee-track" id="marqueeTrack">
+                    <!-- IMAGEN: Cliente 1 (240x340px). Coloca tu imagen como img/cliente1.jpg -->
+                    <div class="marquee-item"><img src="img/cliente1.jpg" alt="Cliente 1"></div>
+                    <!-- IMAGEN: Cliente 2 (240x340px). Coloca tu imagen como img/cliente2.jpg -->
+                    <div class="marquee-item"><img src="img/cliente2.jpg" alt="Cliente 2"></div>
+                    <!-- IMAGEN: Cliente 3 (240x340px). Coloca tu imagen como img/cliente3.jpg -->
+                    <div class="marquee-item"><img src="img/cliente3.jpg" alt="Cliente 3"></div>
+                    <!-- IMAGEN: Cliente 4 (240x340px). Coloca tu imagen como img/cliente4.jpg -->
+                    <div class="marquee-item"><img src="img/cliente4.jpg" alt="Cliente 4"></div>
+                    <!-- Duplicados para scroll infinito -->
+                    <div class="marquee-item"><img src="img/cliente1.jpg" alt="Cliente 1"></div>
+                    <div class="marquee-item"><img src="img/cliente2.jpg" alt="Cliente 2"></div>
+                    <div class="marquee-item"><img src="img/cliente3.jpg" alt="Cliente 3"></div>
+                    <div class="marquee-item"><img src="img/cliente4.jpg" alt="Cliente 4"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Resultados comprobados -->
-    <section class="section bg-light">
+    <!-- RESULTADOS COMPROBADOS -->
+    <section class="section bg-lavender">
         <div class="container" style="display:flex; gap:2rem; align-items:center; flex-wrap:wrap;">
             <div style="flex:1; min-width:300px;">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect fill='%23e8e4da' width='400' height='400' rx='24'/%3E%3Ctext x='200' y='200' text-anchor='middle' fill='%234a4d4c' font-size='18'%3EResultados%3C/text%3E%3C/svg%3E" alt="Resultados" style="width:100%; border-radius:24px;">
+                <!-- IMAGEN: Resultados comprobados (400x400px). Coloca tu imagen como img/resultados.jpg -->
+                <img src="img/resultados.jpeg" alt="Resultados" style="width:100%; border-radius:24px;">
             </div>
             <div style="flex:1; min-width:300px;">
-                <h2>Resultados comprobados</h2>
-                <p>Encuestas a más de 1.000 usuarios de NEURAX.</p>
+                <h2>Resultados demostrados</h2>
+                <p>Basado en la efectividad comprobada de los componentes combinados en la fórmula de <strong>NEURAX</strong> tras 30 días de uso continuo.</p>
                 <div style="display:flex; flex-direction:column; gap:1rem; margin-top:1rem;">
-                    <div><strong>95%</strong> notó mayor claridad mental</div>
-                    <div><strong>87%</strong> redujo el sobrepensamiento</div>
-                    <div><strong>90%</strong> mejoró la calidad del sueño</div>
-                    <div><strong>92%</strong> afirmó sentirse más equilibrado</div>
+                    <div><strong>95%</strong> Logra disolver drásticamente la neblina cerebral y el ruido mental diario.</div>
+                    <div><strong>92%</strong> Experimenta una desconexión nocturna más rápida y un descanso profundo.</div>
+                    <div><strong>90%</strong> Sostiene un rendimiento limpio durante todo el día, sin bajones ni ansiedad.</div>
+                    <div><strong>87%</strong> Recupera la nitidez, la claridad y el foco nítido ante tareas complejas.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Lo que dicen -->
+    <!-- TESTIMONIOS -->
     <section class="section">
         <div class="container">
             <h2 class="section-title">Lo que dicen nuestros clientes</h2>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:1.5rem;">
                 <div style="background:#fff; padding:1.5rem; border-radius:var(--radius-lg); box-shadow:0 4px 16px rgba(0,0,0,0.06);">
-                    <div style="width:100%; height:200px; background:var(--bg-secondary); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; margin-bottom:1rem;">👩</div>
+                    <!-- IMAGEN: Avatar María (200x200px). Coloca tu imagen como img/avatar1.jpg -->
+                    <img src="img/avatar1.jpg" alt="María G." style="width:100%; height:200px; object-fit:cover; border-radius:var(--radius-md); margin-bottom:1rem;">
                     <p>"Antes me costaba concentrarme, ahora puedo trabajar horas sin sentirme agotada."</p>
                     <strong>— María G.</strong>
                 </div>
                 <div style="background:#fff; padding:1.5rem; border-radius:var(--radius-lg); box-shadow:0 4px 16px rgba(0,0,0,0.06);">
-                    <div style="width:100%; height:200px; background:var(--bg-secondary); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; margin-bottom:1rem;">👨</div>
+                    <!-- IMAGEN: Avatar Diego (200x200px). Coloca tu imagen como img/avatar2.jpg -->
+                    <img src="img/avatar2.jpg" alt="Diego R." style="width:100%; height:200px; object-fit:cover; border-radius:var(--radius-md); margin-bottom:1rem;">
                     <p>"Noté que mi recuperación después del gimnasio mejoró un montón."</p>
                     <strong>— Diego R.</strong>
                 </div>
                 <div style="background:#fff; padding:1.5rem; border-radius:var(--radius-lg); box-shadow:0 4px 16px rgba(0,0,0,0.06);">
-                    <div style="width:100%; height:200px; background:var(--bg-secondary); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; margin-bottom:1rem;">👩‍🦰</div>
-                    <p>"Duermo profundamente y me despierto con energía. ¡Increíble cambio!"</p>
+                    <!-- IMAGEN: Avatar Florencia (200x200px). Coloca tu imagen como img/avatar3.jpg -->
+                    <img src="img/avatar3.jpg" alt="Florencia L." style="width:100%; height:200px; object-fit:cover; border-radius:var(--radius-md); margin-bottom:1rem;">
+                    <p>"Duermo profundamente y me despierto con energía."</p>
                     <strong>— Florencia L.</strong>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Explicación breve -->
-    <!-- Explicación breve (rediseñada) -->
-<section class="section bg-dark">
-    <div class="container" style="display:flex; gap:3rem; align-items:center; flex-wrap:wrap;">
-        <!-- Imagen lado izquierdo -->
-        <div style="flex:1; min-width:280px;">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500' viewBox='0 0 500 500'%3E%3Crect fill='%233d6b55' width='500' height='500' rx='28'/%3E%3Ccircle cx='250' cy='250' r='100' fill='none' stroke='%23c9a96e' stroke-width='4'/%3E%3Ctext x='250' y='220' text-anchor='middle' fill='%23fafaf8' font-family='serif' font-size='28' font-weight='bold'%3ENEURAX%3C/text%3E%3Ctext x='250' y='280' text-anchor='middle' fill='%23c9a96e' font-size='18'%3EEquilibrio real%3C/text%3E%3C/svg%3E" 
-                 alt="NEURAX equilibrio del sistema nervioso" 
-                 style="width:100%; border-radius:var(--radius-xl); box-shadow:0 16px 40px rgba(0,0,0,0.3);">
-        </div>
-        <!-- Texto lado derecho -->
-        <div style="flex:1; min-width:280px; color:var(--text-light);">
-            <h2 style="color:#fff; font-size:2rem; margin-bottom:1.2rem;">¿Por qué NEURAX es diferente?</h2>
-            <p style="font-size:1.1rem; line-height:1.7; margin-bottom:1.5rem; color:#d5d5cf;">
-                No es un estimulante ni un sedante. Es un <strong style="color:var(--accent-gold);">regulador inteligente</strong> que ayuda a tu sistema nervioso a encontrar el equilibrio natural. 
-                Magnesio L-Treonato, L-Teanina, Melena de León y Ashwagandha trabajan juntos para que rindas, te recuperes y descanses como tu cuerpo necesita.
-            </p>
-            <a href="#" class="btn-nav" style="display:inline-block; padding:0.8rem 2rem; font-size:1rem;">Quiero probarlo</a>
-        </div>
-    </div>
-</section>
-
-    <!-- Ingredientes slider -->
-   <!-- Ingredientes slider -->
-<section class="section">
-    <div class="container">
-        <h2 class="section-title">Ni estimulante ni sedante, un <strong style="color:var(--accent-gold);">regulador inteligente</strong></h2>
-        <h2 class="section-title">Los ingredientes que hacen que NEURAX actúe distinto</h2>
-        <div class="ingredient-slider">
-            <div class="ingredient-track" id="ingredientTrack">
-                <div class="ingredient-card">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect fill='%23e8e4da' width='300' height='200' rx='12'/%3E%3Ctext x='150' y='110' text-anchor='middle' fill='%234a4d4c' font-size='14'%3E🧠 Magnesio%3C/text%3E%3C/svg%3E" alt="Magnesio">
-                    <h4>Magnesio L-Treonato</h4>
-                    <p>Única forma que atraviesa la barrera hematoencefálica. Apoya la función cognitiva.</p>
-                </div>
-                <div class="ingredient-card">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect fill='%23e8e4da' width='300' height='200' rx='12'/%3E%3Ctext x='150' y='110' text-anchor='middle' fill='%234a4d4c' font-size='14'%3E🍃 L-Teanina%3C/text%3E%3C/svg%3E" alt="L-Teanina">
-                    <h4>L-Teanina</h4>
-                    <p>Aminoácido del té verde. Promueve calma y enfoque sin somnolencia.</p>
-                </div>
-                <div class="ingredient-card">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect fill='%23e8e4da' width='300' height='200' rx='12'/%3E%3Ctext x='150' y='110' text-anchor='middle' fill='%234a4d4c' font-size='14'%3E🍄 Melena%3C/text%3E%3C/svg%3E" alt="Melena de León">
-                    <h4>Melena de León</h4>
-                    <p>Hongo funcional que estimula el factor de crecimiento nervioso (NGF).</p>
-                </div>
-                <div class="ingredient-card">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect fill='%23e8e4da' width='300' height='200' rx='12'/%3E%3Ctext x='150' y='110' text-anchor='middle' fill='%234a4d4c' font-size='14'%3E🌿 Ashwagandha%3C/text%3E%3C/svg%3E" alt="Ashwagandha">
-                    <h4>Ashwagandha KSM-66®</h4>
-                    <p>Adaptógeno clínicamente probado para reducir cortisol y aumentar resiliencia.</p>
-                </div>
-                <!-- Agregar más tarjetas si se desea -->
+    <!-- EXPLICACIÓN BREVE -->
+    <!-- EXPLICACIÓN BREVE -->
+    <section class="section bg-dark">
+        <div class="container" style="display:flex; gap:3rem; align-items:center; flex-wrap:wrap;">
+            <div style="flex:1; min-width:280px;">
+                <!-- IMAGEN: Explicación (500x500px). Coloca tu imagen como img/explicacion.jpg -->
+                <img src="img/explicacion.jpg" alt="NEURAX equilibrio" style="width:100%; border-radius:var(--radius-xl); box-shadow:0 16px 40px rgba(0,0,0,0.3);">
             </div>
-            <div class="slider-arrows">
-                <button class="arrow-btn" id="ingredientPrev" aria-label="Desplazar izquierda">←</button>
-                <button class="arrow-btn" id="ingredientNext" aria-label="Desplazar derecha">→</button>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <!-- FAQ final -->
-    <section class="section bg-light">
-        <div class="container" style="max-width:800px; margin:0 auto;">
-            <h2 class="section-title">❓ Preguntas frecuentes</h2>
-            <div class="faq-item">
-                <button class="faq-question">¿Cómo se toma? <span>▼</span></button>
-                <div class="faq-answer"><p>Dos cápsulas al día con una comida.</p></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">¿Tiene contraindicaciones? <span>▼</span></button>
-                <div class="faq-answer"><p>Consultá a tu médico si estás embarazada, lactando o tomás medicación.</p></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">¿Cuánto dura un frasco? <span>▼</span></button>
-                <div class="faq-answer"><p>60 cápsulas (30 días).</p></div>
+            <div style="flex:1; min-width:280px; color:var(--text-light);">
+                <h2 style="color:#fff; margin-bottom:1.5rem;">¿Qué le pasa a tu sistema nervioso bajo el estrés diario?</h2>
+                <p style="font-size:1.1rem; line-height:1.7; margin-bottom:1.5rem; color:#d5d5cf;">
+                    El sistema nervioso es el centro de control que regula tus niveles de alerta de día y activa tu reparación profunda de noche.
+                </p>
+                <p style="font-size:1.1rem; line-height:1.7; margin-bottom:1.5rem; color:#d5d5cf;">
+                    Con las exigencias diarias, el cansancio acumulado y la falta de nutrientes esenciales, este sistema se descalibra y pierde su capacidad de autorregulación. Cuando tu centro de control se agota, pasan cuatro cosas al mismo tiempo:
+                </p>
+                <ul style="list-style: none; padding:0; margin-bottom:1.5rem; display:flex; flex-direction:column; gap:1rem;">
+                    <li style="display:flex; align-items:flex-start; gap:0.5rem; color:#d5d5cf;">
+                        <span style="color:var(--accent-gold);">▪️</span> <span><strong style="color:#fff;">El foco nítido se dispersa:</strong> Te cuesta concentrarte y aparece la neblina cerebral.</span>
+                    </li>
+                    <li style="display:flex; align-items:flex-start; gap:0.5rem; color:#d5d5cf;">
+                        <span style="color:var(--accent-gold);">▪️</span> <span><strong style="color:#fff;">La energía se vuelve inestable:</strong> Sufrís picos de ansiedad seguidos de bajones críticos de fatiga.</span>
+                    </li>
+                    <li style="display:flex; align-items:flex-start; gap:0.5rem; color:#d5d5cf;">
+                        <span style="color:var(--accent-gold);">▪️</span> <span><strong style="color:#fff;">El cortisol se dispara de noche:</strong> Tu mente no logra apagar el ruido al ir a la cama, arruinando el descanso.</span>
+                    </li>
+                    <li style="display:flex; align-items:flex-start; gap:0.5rem; color:#d5d5cf;">
+                        <span style="color:var(--accent-gold);">▪️</span> <span><strong style="color:#fff;">La biología opera en modo alerta:</strong> Vivís con una sensación constante de urgencia y saturación.</span>
+                    </li>
+                </ul>
+                <p style="font-size:1.1rem; line-height:1.7; margin-bottom:1.5rem; color:#d5d5cf;">
+                    NEURAX equilibra tu sistema nervioso de forma natural, desactivando estas 4 consecuencias desde la raíz con una absorción suave.
+                </p>
+                <a href="#" class="btn-nav" style="display:inline-block; padding:0.8rem 2rem; font-size:1rem;">Quiero probarlo</a>
             </div>
         </div>
     </section>
 
+    <!-- INGREDIENTES SLIDER -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">No es un estimulante ni un calmante. Es una <strong style="color:var(--accent-gold);">fórmula</strong> de diseño limpio. </h2>
+            <h2 class="section-title">Los ingredientes que hacen que NEURAX funcione distinto</h2>
+            <div class="ingredient-slider">
+                <div class="ingredient-track" id="ingredientTrack">
+                    <div class="ingredient-card">
+                        <!-- IMAGEN: Magnesio (300x200px). Coloca tu imagen como img/ingrediente1.jpg -->
+                        <img src="img/ingrediente1.jpg" alt="Treonato de Magnesio">
+                        <h4>🧠 Treonato de Magnesio</h4>
+                        <p>Es la única forma de magnesio capaz de cruzar con eficacia la barrera hematoencefálica para actuar directamente en el cerebro. Optimiza las conexiones sinápticas, disuelve la neblina cerebral y combate la saturación cognitiva desde la primera toma con una absorción suave. Menos fatiga mental, más claridad real.</p>
+                    </div>
+                    <div class="ingredient-card">
+                        <!-- IMAGEN: L-Teanina (300x200px). Coloca tu imagen como img/ingrediente2.jpg -->
+                        <img src="img/ingrediente2.jpg" alt="Melena de León">
+                        <h4>🍄 Melena de León (Extracto)</h4>
+                        <p>El hongo adaptógeno más estudiado para potenciar la neuroplasticidad y estimular el factor de crecimiento nervioso. Protege tus vías neuronales, agiliza la memoria de trabajo y te devuelve la capacidad de concentrarte en una sola tarea sin dispersión. Menos ruido mental, más foco nítido.</p>
+                    </div>
+                    <div class="ingredient-card">
+                        <!-- IMAGEN: Melena de León (300x200px). Coloca tu imagen como img/ingrediente3.jpg -->
+                        <img src="img/ingrediente3.jpg" alt="Ashwagandha">
+                        <h4>🌿 Ashwagandha KSM-66</h4>
+                        <p>El adaptógeno líder a nivel global para regular la producción de cortisol, la hormona del estrés crónico. Modula la respuesta de tu biología ante las exigencias del día para que puedas rendir al máximo sin disparar la ansiedad ni el agotamiento. Menos estrés cotidiano, más rendimiento limpio.</p>
+                    </div>
+                    <div class="ingredient-card">
+                        <!-- IMAGEN: Ashwagandha (300x200px). Coloca tu imagen como img/ingrediente4.jpg -->
+                        <img src="img/ingrediente4.jpg" alt="L-Teanina">
+                        <h4>🌱 L-Teanina</h4>
+                        <p>Aminoácido puro que promueve la aparición de ondas cerebrales tipo alfa, asociadas a los estados de relajación alerta. Calma la mente de forma inmediata sin causar somnolencia durante el día, y facilita una transición fluida hacia el sueño de noche.Menos ansiedad, más calma activa.</p>
+                    </div>
+                    <div class="ingredient-card">
+                        <!-- IMAGEN: Ashwagandha (300x200px). Coloca tu imagen como img/ingrediente4.jpg -->
+                        <img src="img/ingrediente4.jpg" alt="Magnesio">
+                        <h4>🌙 Magnesio (Sinergia)</h4>
+                        <p>Actúa como un relajante neuromuscular que equilibra el cortisol nocturno y resetea el reloj biológico. Garantiza que tu cuerpo logre entrar y mantenerse en las fases de descanso profundo, donde ocurre la verdadera reparación celular sin pesadez. Menos insomnio por alerta, más descanso reparador.</p>
+                    </div>
+                </div>
+                <div class="slider-arrows">
+                    <button class="arrow-btn" id="ingredientPrev">←</button>
+                    <button class="arrow-btn" id="ingredientNext">→</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ FINAL -->
+    <section class="section bg-lavender">
+        <div class="container" style="max-width:800px; margin:0 auto;">
+            <h2 class="section-title">¿Alguna Pregunta?</h2>
+            <div class="faq-item">
+                <button class="faq-question">¿Qué hace exactamente NEURAX? <span>▼</span></button>
+                <div class="faq-answer"><p>NEURAX equilibra tu sistema nervioso de forma integral.
+Ayuda a tu biología a disolver la neblina cerebral, calibrar los niveles de cortisol y recuperar un rendimiento limpio, libre del ruido mental que el estrés te fue sacando, todo a través de una absorción suave. En pocas semanas te sentís con foco nítido, energía estable y un descanso verdaderamente reparador.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">¿Cómo se toma NEURAX? <span>▼</span></button>
+                <div class="faq-answer"><p>Recomendamos dividir la toma para optimizar tanto tu día como tu noche: una porción con el desayuno para potenciar tu rendimiento limpio y foco nítido diario, y otra con la cena para regular el cortisol nocturno, masticando suavemente para una absorción directa, sin pesadez y asegurar un descanso profundo.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">¿Cuándo comienzo a ver resultados? <span>▼</span></button>
+                <div class="faq-answer"><p>La mayoría de las personas empieza a notar menos neblina cerebral y una energía estable entre los primeros días y la segunda semana de uso, sintiendo el alivio inicial de un sistema descalibrado.
+<br></br>
+Contamos con registros de usuarios de alto rendimiento que lograron disolver por completo el ruido mental y consolidar su foco nítido diario en solo 14 días.
+<br></br>
+Los resultados biológicos son acumulativos; la constancia celular optimiza el equilibrio a largo plazo, variando según el nivel de estrés acumulado y el punto inicial de tu biología.
+</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">¿Tiene algún compuesto sintético o algo que altere mi sistema nervioso? <span>▼</span></button>
+                <div class="faq-answer"><p>No. NEURAX es una fórmula de diseño limpio, libre de cafeína, aditivos sintéticos o estimulantes de laboratorio que fuercen a tu cerebro a trabajar bajo presión.
+<br></br>
+Está compuesto exclusivamente por extractos botánicos de alta pureza, adaptógenos, minerales esenciales y aminoácidos puros que equilibran tu biología desde la raíz a través de una absorción suave.
+<br></br>
+Toda su claridad proviene de la optimización celular: te devuelve un rendimiento limpio y un foco nítido, sin causar sobreestimulación, ansiedad, dependencia ni pesadez digestiva.
+</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">¿Necesito cambiar mis hábitos o mi estilo de vida para que funcione? <span>▼</span></button>
+                <div class="faq-answer"><p>No, para nada. NEURAX actúa de forma directa sobre tu biología desde la primera toma a través de una absorción suave, sin importar el nivel de estrés o el ritmo acelerado que lleves hoy.
+<br></br>
+No se trata de sumarte exigencias ni de pedirte que cambies tu rutina actual, sino de darle a tu sistema nervioso los nutrientes puros que necesita para calibrar tu respuesta biológica bajo la presión que ya tenés.
+<br></br>
+NEURAX se adapta a tu vida, no al revés. Vos seguís con tu ritmo operativo, pero tu cerebro responde con un rendimiento limpio, libre de neblina cerebral y con un foco nítido de forma inmediata.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">¿Ayuda a recuperar un cerebro agotado o saturado por el estrés? <span>▼</span></button>
+                <div class="faq-answer"><p>Sí. Todos los ingredientes de la fórmula actúan directamente sobre los procesos celulares que se van descalibrando debido a las exigencias diarias.
+<br></br>
+La Melena de León estimula el factor de crecimiento nervioso ($NGF$) para devolverte la agilidad y la memoria de trabajo que sentís que fuiste perdiendo, mientras que el Treonato de Magnesio cruza directo al cerebro para disolver la neblina cerebral y esa sensación de pesadez cognitiva a través de una absorción suave. En sinergia, la Ashwagandha KSM-66 equilibra el impacto del cortisol para desactivar el agotamiento acumulado, y la L-Teanina apaga el ruido mental, devolviéndote un rendimiento limpio y un foco nítido.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">¿Tiene efectos secundarios o genera dependencia? <span>▼</span></button>
+                <div class="faq-answer"><p>No. Al ser una fórmula de diseño limpio basada en minerales esenciales, aminoácidos y extractos botánicos de alta pureza, no genera efectos secundarios, dependencia ni el clásico efecto de "embotamiento" o somnolencia.
+<br></br>
+Está calibrada biológicamente para el uso diario y a largo plazo, garantizando una absorción suave y sin pesadez digestiva, ayudando a tu sistema nervioso a sostener un rendimiento limpio de forma orgánica.
+<br></br>
+Si estás bajo tratamiento médico, consumís medicación específica o tenés alguna condición particular, siempre sugerimos consultarlo con tu profesional de confianza antes de empezar.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">¿Puedo combinarlo con otros suplementos? <span>▼</span></button>
+                <div class="faq-answer"><p>Sí, perfectamente. Al ser una fórmula de diseño limpio y libre de estimulantes sintéticos, NEURAX no interfiere ni genera "cortocircuitos" con tu café de la mañana, proteínas, creatina u otros suplementos diarios.
+<br></br>
+De hecho, al equilibrar tu biología desde la raíz con una absorción suave, optimiza el terreno para que el resto de tus hábitos y suplementación funcionen con mayor efectividad.
+<br></br>
+Si ya tomás medicación específica para el sistema nervioso, ansiolíticos o seguís tratamientos crónicos, te recomendamos consultarlo con tu profesional de confianza antes de integrarlo a tu rutina.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Contraindicaciones <span>▼</span></button>
+                <div class="faq-answer"><p>Para asegurar una experiencia óptima y segura, te recomendamos evitar NEURAX o consultar previamente con tu profesional de confianza si te encontrás en alguna de estas situaciones:
+<br></br>
+Tratamientos psiquiátricos: Si consumís medicación específica (como ansiolíticos o antidepresivos), ya que nuestra fórmula trabaja sobre la modulación del sistema nervioso.
+<br></br>
+Regulación inmunológica: Si estás tomando medicamentos específicos para el sistema inmune.
+<br></br>
+Condiciones tiroideas: Si presentás patologías tiroideas sin control médico.
+<br></br>
+Intervenciones quirúrgicas: Si tenés programada una cirugía en las próximas dos semanas.
+<br></br>
+Etapas vitales: Si sos menor de 18 años, estás embarazada o en período de lactancia.
+<br></br>
+Hipersensibilidad: Si tenés alergia conocida a cualquiera de los componentes de la fórmula.</p></div>
+            </div>  
+        </div>
+    </section>
+
+<!-- Footer -->
     <footer class="footer">
-        <p>© 2026 NEURAX®. Suplemento dietario. No reemplaza alimentación equilibrada.</p>
-        <p><a href="index.html">← Volver al inicio</a></p>
-    </footer>
+    <div class="footer__inner">
+        <!-- Marca -->
+        <div class="footer__brand">
+            <a href="index.html" class="footer__logo">NEURAX<span>®</span></a>
+            <p class="footer__tagline">Regulador Inteligente del Sistema Nervioso.</p>
+        </div>
+
+        <!-- Enlaces + Instagram -->
+        <div class="footer__links">
+            <h4>Enlaces</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li>
+                    <a href="#" aria-label="Instagram" class="footer__social-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                        Instagram
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Contacto -->
+        <div class="footer__contact">
+            <h4>Contacto</h4>
+            <p>📧 info@neurax.com</p>
+            <p>📱 +54 9 11 1234-5678</p>
+            <p>📍 Buenos Aires, Argentina</p>
+        </div>
+    </div>
+
+    <div class="footer__bottom">
+        <p>© 2026 NEURAX®. Todos los derechos reservados. Suplemento dietario. Consultá a tu médico antes de consumir.</p>
+    </div>
+</footer>
 
     <script>
-        // Galería
+        // Galería de producto (usa imágenes reales)
         const mainImages = [
-            `<svg viewBox="0 0 200 300"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#e8e4da"/><stop offset="100%" stop-color="#d5cfc0"/></linearGradient></defs><rect x="55" y="40" width="90" height="200" rx="16" fill="url(#g1)" stroke="#c0b8a8" stroke-width="2"/><rect x="62" y="80" width="76" height="120" rx="8" fill="#1a1d1c"/><text x="100" y="130" text-anchor="middle" fill="#c9a96e" font-family="serif" font-weight="bold" font-size="16">NEURAX</text><rect x="60" y="245" width="80" height="18" rx="9" fill="#3d6b55"/><text x="100" y="258" text-anchor="middle" fill="#fff" font-size="8">60 CÁPSULAS</text></svg>`,
-            `<svg viewBox="0 0 200 300"><rect x="65" y="40" width="70" height="200" rx="12" fill="#d5cfc0" stroke="#b0a898" stroke-width="2"/><rect x="70" y="90" width="60" height="110" rx="6" fill="#2a2d2c"/><text x="100" y="148" text-anchor="middle" fill="#c9a96e" font-family="serif" font-weight="bold" font-size="22">N</text><rect x="68" y="245" width="64" height="16" rx="8" fill="#3d6b55"/></svg>`,
-            `<svg viewBox="0 0 200 300"><rect x="55" y="40" width="90" height="200" rx="16" fill="#f0ede5" stroke="#c0b8a8" stroke-width="2"/><rect x="62" y="75" width="76" height="130" rx="8" fill="#1a1d1c"/><circle cx="100" cy="130" r="28" fill="none" stroke="#c9a96e" stroke-width="2.5"/><text x="100" y="138" text-anchor="middle" fill="#c9a96e" font-size="20">N</text><rect x="60" y="245" width="80" height="18" rx="9" fill="#3d6b55"/></svg>`,
-            `<svg viewBox="0 0 200 300"><rect x="55" y="55" width="90" height="185" rx="16" fill="#e8e4da" stroke="#c0b8a8" stroke-width="2"/><rect x="55" y="30" width="90" height="35" rx="10" fill="#d5cfc0"/><rect x="62" y="95" width="76" height="110" rx="8" fill="#2a2d2c"/><text x="100" y="148" text-anchor="middle" fill="#c9a96e" font-size="15">NEURAX</text><rect x="60" y="245" width="80" height="18" rx="9" fill="#3d6b55"/></svg>`
+            '<img src="img/frasco1.jpeg" alt="Frasco frontal" style="width:100%; height:100%; object-fit:cover;">',
+            '<img src="img/frasco2.jpg" alt="Frasco lateral" style="width:100%; height:100%; object-fit:cover;">',
+            '<img src="img/frasco3.jpg" alt="Detalle frasco" style="width:100%; height:100%; object-fit:cover;">',
+            '<img src="img/frasco4.jpg" alt="Frasco abierto" style="width:100%; height:100%; object-fit:cover;">'
         ];
         const thumbContainer = document.getElementById('thumbnails');
         const mainImgContainer = document.getElementById('mainImageContainer');
-        mainImages.forEach((img, i) => {
+        mainImages.forEach((img,i) => {
             const thumb = document.createElement('div');
             thumb.className = 'thumb' + (i===0?' active':'');
-            thumb.innerHTML = mainImages[i].replace('width:80%', 'width:100%').replace('height:auto', 'height:100%');
+            thumb.innerHTML = img;
             thumb.addEventListener('click', () => {
                 document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
                 thumb.classList.add('active');
-                mainImgContainer.innerHTML = mainImages[i];
+                mainImgContainer.innerHTML = img;
             });
             thumbContainer.appendChild(thumb);
         });
@@ -666,23 +762,22 @@
         const cartTotal = document.getElementById('cartTotal');
         function renderBundles() {
             bundleContainer.innerHTML = packs.map(p => `
-                <div class="bundle-card ${p.id === currentPack.id ? 'active' : ''}" data-id="${p.id}">
-                    ${p.tag ? `<div class="bundle-tag">${p.tag}</div>` : ''}
+                <div class="bundle-card ${p.id===currentPack.id?'active':''}" data-id="${p.id}">
+                    ${p.tag?`<div class="bundle-tag">${p.tag}</div>`:''}
                     <div class="bundle-radio"></div>
                     <div class="bundle-info">
                         <div class="bundle-title">${p.name}</div>
-                        <div class="bundle-desc">${p.old ? `Ahorrás $${(p.old-p.price).toLocaleString('es-ES')}` : ''}</div>
+                        <div class="bundle-desc">${p.old?`Ahorrás $${(p.old-p.price).toLocaleString('es-ES')}`:''}</div>
                     </div>
                     <div class="bundle-price">
                         <span class="main-price">$${p.price.toLocaleString('es-ES')}</span>
-                        ${p.old ? `<span class="old-price">$${p.old.toLocaleString('es-ES')}</span>` : ''}
+                        ${p.old?`<span class="old-price">$${p.old.toLocaleString('es-ES')}</span>`:''}
                     </div>
                 </div>
             `).join('');
             document.querySelectorAll('.bundle-card').forEach(card => {
                 card.addEventListener('click', () => {
-                    const id = parseInt(card.dataset.id);
-                    currentPack = packs.find(p => p.id === id);
+                    currentPack = packs.find(p => p.id===parseInt(card.dataset.id));
                     renderBundles();
                     cartTotal.textContent = `$${currentPack.price.toLocaleString('es-ES')}`;
                 });
@@ -694,7 +789,7 @@
             alert(`✅ Agregaste ${currentPack.name} al carrito por $${currentPack.price.toLocaleString('es-ES')}.`);
         });
 
-        // Hero FAQ acordeón
+        // Hero FAQ
         document.querySelectorAll('.hero-faq-question').forEach(btn => {
             btn.addEventListener('click', () => {
                 const item = btn.parentElement;
@@ -707,28 +802,16 @@
         window.addEventListener('scroll', () => {
             timelineItems.forEach(item => {
                 const rect = item.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.75) {
-                    item.classList.add('active');
-                }
+                if (rect.top < window.innerHeight*0.75) item.classList.add('active');
             });
         });
 
         // Ingredientes slider
-// Slider de ingredientes
-const ingTrack = document.getElementById('ingredientTrack');
-const prevBtn = document.getElementById('ingredientPrev');
-const nextBtn = document.getElementById('ingredientNext');
-if (ingTrack && prevBtn && nextBtn) {
-    const scrollAmount = 320; // ancho de tarjeta + gap
-    prevBtn.addEventListener('click', () => {
-        ingTrack.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    });
-    nextBtn.addEventListener('click', () => {
-        ingTrack.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    });
-}
+        const ingTrack = document.getElementById('ingredientTrack');
+        document.getElementById('ingredientNext').addEventListener('click', () => ingTrack.scrollBy({left:320, behavior:'smooth'}));
+        document.getElementById('ingredientPrev').addEventListener('click', () => ingTrack.scrollBy({left:-320, behavior:'smooth'}));
 
-        // FAQ final acordeón
+        // FAQ final
         document.querySelectorAll('.faq-question').forEach(btn => {
             btn.addEventListener('click', () => {
                 const item = btn.parentElement;
@@ -736,20 +819,15 @@ if (ingTrack && prevBtn && nextBtn) {
             });
         });
 
-
         // Menú móvil
-const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-const navbarLinks = document.getElementById('navbarLinks');
-if (mobileMenuToggle && navbarLinks) {
-    mobileMenuToggle.addEventListener('click', () => {
-        navbarLinks.classList.toggle('active');
-    });
-    document.querySelectorAll('.navbar-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navbarLinks.classList.remove('active');
-        });
-    });
-}
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navbarLinks = document.getElementById('navbarLinks');
+        if (mobileMenuToggle && navbarLinks) {
+            mobileMenuToggle.addEventListener('click', () => navbarLinks.classList.toggle('active'));
+            document.querySelectorAll('.navbar-links a').forEach(link => {
+                link.addEventListener('click', () => navbarLinks.classList.remove('active'));
+            });
+        }
     </script>
 </body>
 </html>
