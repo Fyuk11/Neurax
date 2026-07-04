@@ -283,22 +283,74 @@
         @keyframes scroll { 0%{ transform:translateX(0); } 100%{ transform:translateX(-50%); } }
 
         /* Ingredientes slider */
-        .ingredient-slider { position:relative; }
-        .ingredient-track {
-            display:flex; gap:1rem; overflow-x:auto; scroll-snap-type:x mandatory;
-            padding-bottom:1rem;
-        }
-        .ingredient-card {
-            flex:0 0 300px; scroll-snap-align:start;
-            background:#fff; border-radius:var(--radius-lg); padding:1.5rem;
-            box-shadow:0 4px 16px rgba(0,0,0,0.06);
-        }
-        .ingredient-card img { width:100%; height:200px; object-fit:cover; border-radius:var(--radius-md); }
-        .slider-arrows { display:flex; justify-content:center; gap:1rem; margin-top:1rem; }
-        .arrow-btn {
-            background:var(--accent-gold); color:#fff; border:none;
-            width:40px; height:40px; border-radius:50%; font-size:1.2rem; cursor:pointer;
-        }
+       /* Ingredientes slider rediseñado */
+.ingredient-slider {
+    position: relative;
+    padding: 0 48px; /* espacio para las flechas laterales */
+}
+.ingredient-track {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none;           /* Firefox */
+    -ms-overflow-style: none;        /* IE/Edge */
+}
+.ingredient-track::-webkit-scrollbar {
+    display: none;                   /* Chrome/Safari */
+}
+.ingredient-card {
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+.ingredient-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+}
+/* Flechas posicionadas a los costados */
+.slider-arrows {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;   /* para que no bloqueen el scroll de las tarjetas */
+    z-index: 2;
+}
+.arrow-btn {
+    background: var(--accent-gold);
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    pointer-events: auto;   /* permitir clics en las flechas */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+}
+.arrow-btn:hover {
+    background: var(--accent-gold-dark);
+}
+
+@media (max-width: 640px) {
+    .ingredient-slider {
+        padding: 0 36px; /* menos espacio en móviles */
+    }
+    .ingredient-card {
+        flex: 0 0 85%; /* tarjetas más anchas en pantallas chicas */
+    }
+}
 
         /* FAQ final */
         .faq-item { border-bottom:1px solid var(--border-subtle); }
@@ -519,39 +571,42 @@
 </section>
 
     <!-- Ingredientes slider -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">🌿 Ingredientes premium</h2>
-            <div class="ingredient-slider">
-                <div class="ingredient-track" id="ingredientTrack">
-                    <div class="ingredient-card">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect fill='%23e8e4da' width='300' height='200' rx='12'/%3E%3Ctext x='150' y='110' text-anchor='middle' fill='%234a4d4c' font-size='14'%3E🧠 Magnesio%3C/text%3E%3C/svg%3E" alt="Magnesio">
-                        <h4>Magnesio L-Treonato</h4>
-                        <p>Única forma que atraviesa la barrera hematoencefálica. Apoya la función cognitiva.</p>
-                    </div>
-                    <div class="ingredient-card">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect fill='%23e8e4da' width='300' height='200' rx='12'/%3E%3Ctext x='150' y='110' text-anchor='middle' fill='%234a4d4c' font-size='14'%3E🍃 L-Teanina%3C/text%3E%3C/svg%3E" alt="L-Teanina">
-                        <h4>L-Teanina</h4>
-                        <p>Aminoácido del té verde. Promueve calma y enfoque sin somnolencia.</p>
-                    </div>
-                    <div class="ingredient-card">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect fill='%23e8e4da' width='300' height='200' rx='12'/%3E%3Ctext x='150' y='110' text-anchor='middle' fill='%234a4d4c' font-size='14'%3E🍄 Melena%3C/text%3E%3C/svg%3E" alt="Melena de León">
-                        <h4>Melena de León</h4>
-                        <p>Hongo funcional que estimula el factor de crecimiento nervioso (NGF).</p>
-                    </div>
-                    <div class="ingredient-card">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect fill='%23e8e4da' width='300' height='200' rx='12'/%3E%3Ctext x='150' y='110' text-anchor='middle' fill='%234a4d4c' font-size='14'%3E🌿 Ashwagandha%3C/text%3E%3C/svg%3E" alt="Ashwagandha">
-                        <h4>Ashwagandha KSM-66®</h4>
-                        <p>Adaptógeno clínicamente probado para reducir cortisol y aumentar resiliencia.</p>
-                    </div>
+   <!-- Ingredientes slider -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Ni estimulante ni sedante, un <strong style="color:var(--accent-gold);">regulador inteligente</strong></h2>
+        <h2 class="section-title">Los ingredientes que hacen que NEURAX actúe distinto</h2>
+        <div class="ingredient-slider">
+            <div class="ingredient-track" id="ingredientTrack">
+                <div class="ingredient-card">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect fill='%23e8e4da' width='300' height='200' rx='12'/%3E%3Ctext x='150' y='110' text-anchor='middle' fill='%234a4d4c' font-size='14'%3E🧠 Magnesio%3C/text%3E%3C/svg%3E" alt="Magnesio">
+                    <h4>Magnesio L-Treonato</h4>
+                    <p>Única forma que atraviesa la barrera hematoencefálica. Apoya la función cognitiva.</p>
                 </div>
-                <div class="slider-arrows">
-                    <button class="arrow-btn" id="ingredientPrev">←</button>
-                    <button class="arrow-btn" id="ingredientNext">→</button>
+                <div class="ingredient-card">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect fill='%23e8e4da' width='300' height='200' rx='12'/%3E%3Ctext x='150' y='110' text-anchor='middle' fill='%234a4d4c' font-size='14'%3E🍃 L-Teanina%3C/text%3E%3C/svg%3E" alt="L-Teanina">
+                    <h4>L-Teanina</h4>
+                    <p>Aminoácido del té verde. Promueve calma y enfoque sin somnolencia.</p>
                 </div>
+                <div class="ingredient-card">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect fill='%23e8e4da' width='300' height='200' rx='12'/%3E%3Ctext x='150' y='110' text-anchor='middle' fill='%234a4d4c' font-size='14'%3E🍄 Melena%3C/text%3E%3C/svg%3E" alt="Melena de León">
+                    <h4>Melena de León</h4>
+                    <p>Hongo funcional que estimula el factor de crecimiento nervioso (NGF).</p>
+                </div>
+                <div class="ingredient-card">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect fill='%23e8e4da' width='300' height='200' rx='12'/%3E%3Ctext x='150' y='110' text-anchor='middle' fill='%234a4d4c' font-size='14'%3E🌿 Ashwagandha%3C/text%3E%3C/svg%3E" alt="Ashwagandha">
+                    <h4>Ashwagandha KSM-66®</h4>
+                    <p>Adaptógeno clínicamente probado para reducir cortisol y aumentar resiliencia.</p>
+                </div>
+                <!-- Agregar más tarjetas si se desea -->
+            </div>
+            <div class="slider-arrows">
+                <button class="arrow-btn" id="ingredientPrev" aria-label="Desplazar izquierda">←</button>
+                <button class="arrow-btn" id="ingredientNext" aria-label="Desplazar derecha">→</button>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- FAQ final -->
     <section class="section bg-light">
@@ -659,9 +714,19 @@
         });
 
         // Ingredientes slider
-        const ingTrack = document.getElementById('ingredientTrack');
-        document.getElementById('ingredientNext').addEventListener('click', () => ingTrack.scrollBy({ left:320, behavior:'smooth' }));
-        document.getElementById('ingredientPrev').addEventListener('click', () => ingTrack.scrollBy({ left:-320, behavior:'smooth' }));
+// Slider de ingredientes
+const ingTrack = document.getElementById('ingredientTrack');
+const prevBtn = document.getElementById('ingredientPrev');
+const nextBtn = document.getElementById('ingredientNext');
+if (ingTrack && prevBtn && nextBtn) {
+    const scrollAmount = 320; // ancho de tarjeta + gap
+    prevBtn.addEventListener('click', () => {
+        ingTrack.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+    nextBtn.addEventListener('click', () => {
+        ingTrack.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+}
 
         // FAQ final acordeón
         document.querySelectorAll('.faq-question').forEach(btn => {
